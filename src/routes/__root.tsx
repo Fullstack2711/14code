@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Code14" },
+      { name: "description", content: "Code14  -  14kunda  Junior bo'lib birinchi ishingizni toping" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Code14" },
+      { property: "og:description", content: "Code14  -  14kunda  Junior bo'lib birinchi ishingizni toping" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Code14" },
+      { name: "twitter:description", content: "Code14  -  14kunda  Junior bo'lib birinchi ishingizni toping" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/6WKtDfWdQ8XIA15at2sIHCOvO9t1/social-images/social-1777359389362-ChatGPT_Image_Apr_28__2026__11_55_07_AM-removebg-preview.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/6WKtDfWdQ8XIA15at2sIHCOvO9t1/social-images/social-1777359389362-ChatGPT_Image_Apr_28__2026__11_55_07_AM-removebg-preview.webp" },
     ],
     links: [
       {
