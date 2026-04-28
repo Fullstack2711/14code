@@ -50,7 +50,7 @@ export function Roadmap() {
           <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-white/10">
             <motion.div
               style={{ height: lineHeight }}
-              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary via-primary-glow to-primary shadow-[0_0_12px_oklch(0.68_0.20_254)]"
+              className="absolute top-0 left-0 right-0 bg-linear-to-b from-primary via-primary-glow to-primary shadow-[0_0_12px_oklch(0.68_0.20_254)]"
             />
           </div>
 

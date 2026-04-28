@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
-import {
-  Code2,
-  Braces,
-  Atom,
-  GitBranch,
-  Rocket,
-  MessageSquare,
-} from "lucide-react";
+import { Code2, Braces, Atom, GitBranch, Rocket, MessageSquare } from "lucide-react";
 
 const features = [
   {
@@ -42,7 +35,7 @@ const features = [
   },
 ];
 
-function FeatureCard({ icon: Icon, title, desc, index }: typeof features[0] & { index: number }) {
+function FeatureCard({ icon: Icon, title, desc, index }: (typeof features)[0] & { index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -70,7 +63,7 @@ function FeatureCard({ icon: Icon, title, desc, index }: typeof features[0] & { 
           background: `radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), oklch(0.68 0.20 254 / 0.10), transparent 40%), linear-gradient(135deg, oklch(1 0 0 / 0.06) 0%, oklch(1 0 0 / 0.02) 100%)`,
         }}
       >
-        <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-primary-glow/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+        <div className="relative w-12 h-12 rounded-2xl bg-linear-to-br from-primary/20 to-primary-glow/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
           <Icon className="w-5 h-5 text-primary" />
           <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
         </div>
@@ -99,7 +92,8 @@ export function Features() {
             Nima <span className="text-gradient-electric">o'rganasiz</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Junior Developer bo'lib ishga kirish uchun kerak bo'ladigan barcha texnologiyalar — suvsiz, faqat amaliyot.
+            Junior Developer bo'lib ishga kirish uchun kerak bo'ladigan barcha texnologiyalar —
+            suvsiz, faqat amaliyot.
           </p>
         </motion.div>
 

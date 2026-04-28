@@ -11,12 +11,23 @@ const stats = [
 
 const companies = ["Google", "Amazon", "Meta", "Microsoft", "Uber", "Netflix", "Spotify", "Airbnb"];
 
-function Stat({ value, suffix, label, inView }: { value: number; suffix: string; label: string; inView: boolean }) {
+function Stat({
+  value,
+  suffix,
+  label,
+  inView,
+}: {
+  value: number;
+  suffix: string;
+  label: string;
+  inView: boolean;
+}) {
   const n = useCountUp(value, 1800, inView);
   return (
     <div className="text-center">
       <div className="text-4xl sm:text-5xl font-bold text-gradient tracking-tight">
-        {n}{suffix}
+        {n}
+        {suffix}
       </div>
       <div className="mt-1.5 text-sm text-muted-foreground">{label}</div>
     </div>
@@ -48,11 +59,14 @@ export function SocialProof() {
               Bitiruvchilarimiz ishlaydigan kompaniyalar
             </p>
             <div className="relative overflow-hidden">
-              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
-              <div className="flex gap-12 animate-[shimmer_30s_linear_infinite]" style={{
-                animation: "scroll 30s linear infinite",
-              }}>
+              <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-background to-transparent z-10" />
+              <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-background to-transparent z-10" />
+              <div
+                className="flex gap-12 animate-[shimmer_30s_linear_infinite]"
+                style={{
+                  animation: "scroll 30s linear infinite",
+                }}
+              >
                 {[...companies, ...companies].map((c, i) => (
                   <div
                     key={i}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, Sparkles, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BallpitBackground } from "@/components/ui/interactive-hero-backgrounds";
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -9,10 +10,38 @@ interface HeroProps {
 
 const codeLines: { tokens: { text: string; color?: string }[] }[] = [
   { tokens: [{ text: "// 14 kunlik transformatsiya", color: "text-muted-foreground" }] },
-  { tokens: [{ text: "const", color: "text-[#c084fc]" }, { text: " ", color: "text-foreground" }, { text: "you", color: "text-[#60a5fa]" }, { text: " = ", color: "text-foreground" }, { text: "await", color: "text-[#c084fc]" }, { text: " ", color: "text-foreground" }, { text: "learn", color: "text-[#fbbf24]" }, { text: "({", color: "text-foreground" }] },
-  { tokens: [{ text: "  duration: ", color: "text-foreground" }, { text: "'14 days'", color: "text-[#86efac]" }, { text: ",", color: "text-foreground" }] },
-  { tokens: [{ text: "  practice: ", color: "text-foreground" }, { text: "'100%'", color: "text-[#86efac]" }, { text: ",", color: "text-foreground" }] },
-  { tokens: [{ text: "  result: ", color: "text-foreground" }, { text: "'junior-dev'", color: "text-[#86efac]" }] },
+  {
+    tokens: [
+      { text: "const", color: "text-[#c084fc]" },
+      { text: " ", color: "text-foreground" },
+      { text: "you", color: "text-[#60a5fa]" },
+      { text: " = ", color: "text-foreground" },
+      { text: "await", color: "text-[#c084fc]" },
+      { text: " ", color: "text-foreground" },
+      { text: "learn", color: "text-[#fbbf24]" },
+      { text: "({", color: "text-foreground" },
+    ],
+  },
+  {
+    tokens: [
+      { text: "  duration: ", color: "text-foreground" },
+      { text: "'14 days'", color: "text-[#86efac]" },
+      { text: ",", color: "text-foreground" },
+    ],
+  },
+  {
+    tokens: [
+      { text: "  practice: ", color: "text-foreground" },
+      { text: "'100%'", color: "text-[#86efac]" },
+      { text: ",", color: "text-foreground" },
+    ],
+  },
+  {
+    tokens: [
+      { text: "  result: ", color: "text-foreground" },
+      { text: "'junior-dev'", color: "text-[#86efac]" },
+    ],
+  },
   { tokens: [{ text: "});", color: "text-foreground" }] },
   { tokens: [] },
   { tokens: [{ text: "// → Ofer qo'lingizda", color: "text-muted-foreground" }] },
@@ -30,7 +59,7 @@ function CodeEditor() {
 
   return (
     <div className="glass-card-strong rounded-2xl overflow-hidden font-mono text-[13px] leading-[1.75]">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.02]">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/2">
         <div className="flex items-center gap-1.5">
           <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
@@ -66,7 +95,7 @@ function CodeEditor() {
         ))}
       </div>
 
-      <div className="flex items-center justify-between px-4 py-2.5 border-t border-white/5 bg-white/[0.02] text-xs">
+      <div className="flex items-center justify-between px-4 py-2.5 border-t border-white/5 bg-white/2 text-xs">
         <div className="flex items-center gap-3 text-muted-foreground">
           <span className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
@@ -92,9 +121,22 @@ export function Hero({ onCtaClick }: HeroProps) {
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+        <BallpitBackground
+          className="opacity-55"
+          ballpitConfig={{
+            count: 150,
+            gravity: 0.5,
+            friction: 0.99,
+            minSize: 0.4,
+            maxSize: 0.9,
+            lightIntensity: 6,
+            ambientIntensity: 2.2,
+            colors: ["#60a5fa", "#a78bfa", "#22d3ee", "#93c5fd"],
+          }}
+        />
         <div className="absolute inset-0 grid-bg" />
         <div className="absolute top-1/4 left-[10%] w-96 h-96 rounded-full bg-primary/25 blur-[120px] animate-float-slow" />
-        <div className="absolute bottom-1/4 right-[8%] w-[30rem] h-[30rem] rounded-full bg-primary-glow/20 blur-[140px] animate-float-slower" />
+        <div className="absolute bottom-1/4 right-[8%] w-120 h-120 rounded-full bg-primary-glow/20 blur-[140px] animate-float-slower" />
       </div>
 
       <div className="mx-auto max-w-6xl px-4 w-full">
@@ -106,7 +148,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
             {/* Announcement pill */}
-            <motion.button
+            {/* <motion.button
               onClick={onCtaClick}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -121,16 +163,21 @@ export function Hero({ onCtaClick }: HeroProps) {
                 Mart oqimiga ro'yxat ochildi
               </span>
               <ArrowRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 group-hover:text-primary transition-all" />
-            </motion.button>
+            </motion.button> */}
 
-            <h1 className="text-[2.5rem] sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight leading-[1.02]">
-              <span className="text-foreground">2 haftada </span>
-              <span className="text-gradient-electric">Junior Dev</span>
-              <br />
-              <span className="text-gradient">bo'lib ishga kiring.</span>
+            <h1 className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold tracking-tight leading-[1.05] lg:leading-[1.02]">
+              <span className="block whitespace-nowrap text-center text-foreground/90">
+                2 Haftada
+              </span>
+              <span className="block mt-1 sm:mt-2 whitespace-nowrap text-left">
+                <span className="text-gradient-electric drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.35)]">
+                  Junior
+                </span>{" "}
+                <span className="text-foreground">Dasturchi</span>
+              </span>
             </h1>
 
-            <p className="mt-6 text-lg text-muted-foreground max-w-lg leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed text-pretty">
               100% amaliy kurs. Real loyihalar, mentor qo'llab-quvvatlashi va ishga joylashish
               kafolati — <span className="text-foreground font-medium">14 kunda</span>.
             </p>
@@ -140,7 +187,7 @@ export function Hero({ onCtaClick }: HeroProps) {
               <Button
                 onClick={onCtaClick}
                 size="lg"
-                className="group bg-gradient-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 rounded-2xl h-14 px-7 text-base font-semibold shadow-[0_10px_40px_-10px_oklch(0.68_0.20_254/0.7)] transition-all hover:shadow-[0_14px_50px_-10px_oklch(0.68_0.20_254/0.85)] hover:-translate-y-0.5"
+                className="group bg-linear-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 rounded-2xl h-14 px-7 text-base font-semibold shadow-[0_10px_40px_-10px_oklch(0.68_0.20_254/0.7)] transition-all hover:shadow-[0_14px_50px_-10px_oklch(0.68_0.20_254/0.85)] hover:-translate-y-0.5"
               >
                 Joyimni Band Qilish
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -160,7 +207,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-primary" />
-                3 kun pul qaytarish
+                <span>3 kun pul qaytarish</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-primary" />
@@ -190,7 +237,7 @@ export function Hero({ onCtaClick }: HeroProps) {
                     </div>
                   </div>
                   {i < stats.length - 1 && (
-                    <div className="w-px h-10 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+                    <div className="w-px h-10 bg-linear-to-b from-transparent via-white/10 to-transparent" />
                   )}
                 </div>
               ))}
@@ -204,7 +251,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             transition={{ duration: 0.9, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
             className="relative"
           >
-            <div className="absolute -inset-10 bg-gradient-to-br from-primary/35 via-primary-glow/15 to-transparent blur-3xl rounded-full animate-pulse-glow" />
+            <div className="absolute -inset-10 bg-linear-to-br from-primary/35 via-primary-glow/15 to-transparent blur-3xl rounded-full animate-pulse-glow" />
 
             <div className="relative">
               <CodeEditor />
@@ -226,14 +273,14 @@ export function Hero({ onCtaClick }: HeroProps) {
                 <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
                 Live deploy
               </motion.div>
-              <motion.div
+              {/* <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                 className="absolute top-1/2 -right-6 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden md:flex items-center gap-2"
               >
                 <Sparkles className="w-3.5 h-3.5 text-primary" />
                 AI mentor
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>

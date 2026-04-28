@@ -30,8 +30,7 @@ export function BeforeAfter() {
             Talabalar natijasi
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            14 kun ichida —{" "}
-            <span className="text-gradient-electric">to'liq transformatsiya</span>
+            14 kun ichida — <span className="text-gradient-electric">to'liq transformatsiya</span>
           </h2>
         </motion.div>
 
@@ -71,7 +70,7 @@ export function BeforeAfter() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="hidden md:flex items-center justify-center"
           >
-            <div className="relative w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center shadow-[0_0_30px_oklch(0.68_0.20_254/0.6)]">
+            <div className="relative w-14 h-14 rounded-full bg-linear-to-br from-primary to-primary-glow flex items-center justify-center shadow-[0_0_30px_oklch(0.68_0.20_254/0.6)]">
               <ArrowRight className="w-6 h-6 text-primary-foreground" />
               <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-20" />
             </div>
@@ -90,9 +89,7 @@ export function BeforeAfter() {
               <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
                 14 kundan keyin
               </div>
-              <h3 className="text-2xl font-bold tracking-tight text-gradient">
-                Junior Developer
-              </h3>
+              <h3 className="text-2xl font-bold tracking-tight text-gradient">Junior Developer</h3>
               <ul className="mt-6 space-y-3">
                 {after.map((a) => (
                   <li key={a} className="flex items-start gap-3 text-sm text-foreground">

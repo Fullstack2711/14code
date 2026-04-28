@@ -9,16 +9,29 @@ export function Footer() {
             <img
               src={logo}
               alt="Code14 logo"
+              width={36}
+              height={36}
               className="w-9 h-9 object-contain drop-shadow-[0_0_14px_oklch(0.68_0.20_254/0.4)]"
             />
             <span className="sr-only">Code14</span>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#kurs" className="hover:text-foreground transition-colors">Kurs</a>
-            <a href="#pricing" className="hover:text-foreground transition-colors">Narxlar</a>
-            <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
-            <a href="https://t.me" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
+            <a href="#kurs" className="hover:text-foreground transition-colors">
+              Kurs
+            </a>
+            <a href="#pricing" className="hover:text-foreground transition-colors">
+              Narxlar
+            </a>
+            <a href="#faq" className="hover:text-foreground transition-colors">
+              FAQ
+            </a>
+            <a
+              href="https://t.me"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
               Telegram
             </a>
           </div>

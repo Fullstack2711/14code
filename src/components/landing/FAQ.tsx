@@ -44,8 +44,7 @@ export function FAQ() {
             Savollar
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Tez-tez beriladigan{" "}
-            <span className="text-gradient-electric">savollar</span>
+            Tez-tez beriladigan <span className="text-gradient-electric">savollar</span>
           </h2>
         </motion.div>
 
@@ -58,11 +57,7 @@ export function FAQ() {
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border-white/5 last:border-0"
-              >
+              <AccordionItem key={i} value={`item-${i}`} className="border-white/5 last:border-0">
                 <AccordionTrigger className="px-4 sm:px-5 py-5 text-left text-base font-medium hover:no-underline hover:text-primary transition-colors">
                   {f.q}
                 </AccordionTrigger>

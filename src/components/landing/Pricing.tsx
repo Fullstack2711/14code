@@ -5,13 +5,12 @@ import { Button } from "@/components/ui/button";
 
 const plans = [
   {
-    name: "Standard",
-    price: "1,200,000",
-    desc: "Boshlash uchun ideal",
+    name: "Starter",
+    price: "300,000",
+    desc: "Video kurs + materiallar",
     features: [
-      "14 kunlik to'liq kurs access",
-      "Barcha video darslar",
-      "Vazifalar va loyihalar",
+      "14 kunlik video darslar",
+      "Barcha materiallar va vazifalar",
       "Telegram community",
       "Sertifikat",
     ],
@@ -19,19 +18,33 @@ const plans = [
     highlighted: false,
   },
   {
+    name: "Standard",
+    price: "500,000",
+    desc: "Kurs + mentor qo'llab-quvvatlash",
+    features: [
+      "Starter'dagi hammasi",
+      "Mentor daily review",
+      "Loyiha feedback",
+      "CV correction",
+      "Priority Telegram support",
+    ],
+    cta: "Joyni Band Qilish",
+    highlighted: true,
+  },
+  {
     name: "Pro",
-    price: "2,400,000",
+    price: "1,200,000",
     desc: "Ish topishni kafolatlaymiz",
     features: [
       "Standard'dagi hammasi",
       "1:1 mentor sessions",
-      "CV va LinkedIn correction",
+      "LinkedIn correction",
       "Mock interview (HR + Tech)",
-      "Priority support 24/7",
-      "Ish topishga yordam",
+      "Ish topishga to'g'ridan-to'g'ri yordam",
+      "Kompaniyalarga tavsiya",
     ],
-    cta: "Joyni Band Qilish",
-    highlighted: true,
+    cta: "Pro Joyni Band Qilish",
+    highlighted: false,
   },
 ];
 
@@ -104,7 +117,7 @@ export function Pricing({ onCtaClick }: PricingProps) {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map((p, i) => (
             <motion.div
               key={p.name}
@@ -116,8 +129,8 @@ export function Pricing({ onCtaClick }: PricingProps) {
             >
               {p.highlighted && (
                 <>
-                  <div className="absolute -inset-1 bg-gradient-to-br from-primary to-primary-glow rounded-3xl blur-md opacity-60" />
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground text-xs font-bold shadow-lg">
+                  <div className="absolute -inset-1 bg-linear-to-br from-primary to-primary-glow rounded-3xl blur-md opacity-60" />
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded-full bg-linear-to-r from-primary to-primary-glow text-primary-foreground text-xs font-bold shadow-lg">
                     ENG MASHHUR
                   </div>
                 </>
@@ -125,15 +138,15 @@ export function Pricing({ onCtaClick }: PricingProps) {
 
               <div
                 className={`relative h-full rounded-3xl p-7 sm:p-8 ${
-                  p.highlighted
-                    ? "glass-card-strong border-primary/30"
-                    : "glass-card"
+                  p.highlighted ? "glass-card-strong border-primary/30" : "glass-card"
                 }`}
               >
                 <div className="text-sm text-muted-foreground">{p.desc}</div>
                 <h3 className="text-2xl font-bold tracking-tight mt-1">{p.name}</h3>
                 <div className="mt-5 flex items-baseline gap-1.5">
-                  <span className={`text-4xl font-bold tracking-tight ${p.highlighted ? "text-gradient-electric" : "text-foreground"}`}>
+                  <span
+                    className={`text-4xl font-bold tracking-tight ${p.highlighted ? "text-gradient-electric" : "text-foreground"}`}
+                  >
                     {p.price}
                   </span>
                   <span className="text-sm text-muted-foreground">so'm</span>
@@ -142,10 +155,14 @@ export function Pricing({ onCtaClick }: PricingProps) {
                 <ul className="mt-7 space-y-3">
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm">
-                      <div className={`w-5 h-5 mt-0.5 rounded-full flex items-center justify-center shrink-0 ${
-                        p.highlighted ? "bg-primary/20" : "bg-white/8"
-                      }`}>
-                        <Check className={`w-3 h-3 ${p.highlighted ? "text-primary" : "text-foreground/80"}`} />
+                      <div
+                        className={`w-5 h-5 mt-0.5 rounded-full flex items-center justify-center shrink-0 ${
+                          p.highlighted ? "bg-primary/20" : "bg-white/8"
+                        }`}
+                      >
+                        <Check
+                          className={`w-3 h-3 ${p.highlighted ? "text-primary" : "text-foreground/80"}`}
+                        />
                       </div>
                       <span className="text-foreground/90">{f}</span>
                     </li>
@@ -157,7 +174,7 @@ export function Pricing({ onCtaClick }: PricingProps) {
                   size="lg"
                   className={`w-full mt-8 rounded-2xl h-13 font-semibold ${
                     p.highlighted
-                      ? "bg-gradient-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 shadow-[0_10px_30px_-10px_oklch(0.68_0.20_254/0.7)]"
+                      ? "bg-linear-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 shadow-[0_10px_30px_-10px_oklch(0.68_0.20_254/0.7)]"
                       : "glass-card hover:bg-white/8 text-foreground border border-white/10"
                   }`}
                 >

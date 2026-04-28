@@ -37,13 +37,7 @@ const reasons = [
   },
 ];
 
-function ReasonRow({
-  r,
-  i,
-}: {
-  r: (typeof reasons)[number];
-  i: number;
-}) {
+function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -72,7 +66,7 @@ function ReasonRow({
         }}
       >
         {/* Top hairline glow on hover */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         <div className="grid grid-cols-12 gap-6 p-6 sm:p-8 lg:p-10 items-center">
           {/* Number — huge */}
@@ -94,10 +88,10 @@ function ReasonRow({
           {/* Body */}
           <div className="col-span-9 sm:col-span-7 lg:col-span-7">
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/25 to-transparent border border-primary/25 flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-linear-to-br from-primary/25 to-transparent border border-primary/25 flex items-center justify-center shrink-0">
                 <Icon className="w-4 h-4 text-primary" />
               </div>
-              <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
+              <div className="h-px flex-1 bg-linear-to-r from-white/15 to-transparent" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
               {r.title}
@@ -132,8 +126,7 @@ export function WhyCourse() {
       <div
         className="absolute inset-0 -z-10 opacity-[0.025]"
         style={{
-          backgroundImage:
-            "radial-gradient(oklch(1 0 0) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(oklch(1 0 0) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -152,13 +145,11 @@ export function WhyCourse() {
             Nima uchun Code14
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-            To'rt sabab —{" "}
-            <span className="text-gradient-electric">14 kun yetarli.</span>
+            To'rt sabab — <span className="text-gradient-electric">14 kun yetarli.</span>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Nazariya emas, ish bozori uchun siqilgan amaliy dastur. Har bir
-            element bitta maqsadga xizmat qiladi — sizni Junior Developer
-            qilish.
+            Nazariya emas, ish bozori uchun siqilgan amaliy dastur. Har bir element bitta maqsadga
+            xizmat qiladi — sizni Junior Developer qilish.
           </p>
         </motion.div>
 
@@ -175,15 +166,13 @@ export function WhyCourse() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent backdrop-blur-xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+          className="mt-10 rounded-2xl border border-primary/20 bg-linear-to-r from-primary/10 via-primary/5 to-transparent backdrop-blur-xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
         >
           <div className="flex items-center gap-3 flex-1">
             <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
             <p className="text-sm sm:text-base">
               <span className="font-semibold">3 kun pul qaytarish kafolati.</span>{" "}
-              <span className="text-muted-foreground">
-                Yoqmasa — to'liq qaytaramiz, savolsiz.
-              </span>
+              <span className="text-muted-foreground">Yoqmasa — to'liq qaytaramiz, savolsiz.</span>
             </p>
           </div>
           <a

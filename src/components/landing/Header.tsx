@@ -22,8 +22,9 @@ export function Header({ onCtaClick }: HeaderProps) {
 
   const links = [
     { href: "#kurs", label: "Kurs" },
-    { href: "#roadmap", label: "Roadmap" },
+    // { href: "#roadmap", label: "Roadmap" },
     { href: "#mentor", label: "Mentor" },
+    { href: "#modullar", label: "Modullar" },
     { href: "#pricing", label: "Narxlar" },
     { href: "#faq", label: "FAQ" },
   ];
@@ -32,28 +33,23 @@ export function Header({ onCtaClick }: HeaderProps) {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "py-3" : "py-5"
+        scrolled ? "py-3" : "py-5",
       )}
     >
-      <div
-        className={cn(
-          "mx-auto max-w-6xl px-4 transition-all duration-500",
-          scrolled && "px-3"
-        )}
-      >
+      <div className={cn("mx-auto max-w-6xl px-4 transition-all duration-500", scrolled && "px-3")}>
         <div
           className={cn(
             "flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500",
-            scrolled
-              ? "glass-card-strong"
-              : "border border-transparent"
+            scrolled ? "glass-card-strong" : "border border-transparent",
           )}
         >
           <Link to="/" className="flex items-center gap-2 group" aria-label="Code14 — Bosh sahifa">
             <img
               src={logo}
               alt="Code14 logo"
-              className="w-10 h-10 object-contain drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.45)] group-hover:scale-105 transition-transform"
+              width={40}
+              height={40}
+              className="w-10 h-10 scale-150 md:scale-150 object-contain drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.45)] group-hover:scale-105 transition-transform"
             />
             <span className="sr-only">Code14</span>
           </Link>
@@ -74,7 +70,7 @@ export function Header({ onCtaClick }: HeaderProps) {
             <Button
               onClick={onCtaClick}
               size="sm"
-              className="hidden sm:inline-flex bg-gradient-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-90 shadow-[0_0_20px_-4px_oklch(0.68_0.20_254/0.6)] rounded-xl font-medium"
+              className="hidden sm:inline-flex bg-linear-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-90 shadow-[0_0_20px_-4px_oklch(0.68_0.20_254/0.6)] rounded-xl font-medium"
             >
               Hoziroq Boshlash
             </Button>
@@ -105,7 +101,7 @@ export function Header({ onCtaClick }: HeaderProps) {
                 setOpen(false);
                 onCtaClick();
               }}
-              className="bg-gradient-to-r from-primary to-primary-glow text-primary-foreground rounded-xl"
+              className="bg-linear-to-r from-primary to-primary-glow text-primary-foreground rounded-xl"
             >
               Hoziroq Boshlash
             </Button>

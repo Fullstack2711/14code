@@ -5,6 +5,7 @@ import { Hero } from "@/components/landing/Hero";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { Features } from "@/components/landing/Features";
 import { Roadmap } from "@/components/landing/Roadmap";
+import { Modullar } from "@/components/landing/Modullar";
 import { WhyCourse } from "@/components/landing/WhyCourse";
 import { Mentor } from "@/components/landing/Mentor";
 import { BeforeAfter } from "@/components/landing/BeforeAfter";
@@ -168,7 +169,8 @@ function Index() {
       <Hero onCtaClick={openDialog} />
       <SocialProof />
       <Features />
-      <Roadmap />
+      {/* <Roadmap /> */}
+      <Modullar />
       <WhyCourse />
       <Mentor />
       <BeforeAfter />
