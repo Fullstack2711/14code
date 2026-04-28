@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 interface HeaderProps {
   onCtaClick: () => void;
@@ -48,13 +49,13 @@ export function Header({ onCtaClick }: HeaderProps) {
               : "border border-transparent"
           )}
         >
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center shadow-[0_0_20px_-2px_oklch(0.68_0.20_254/0.6)] group-hover:scale-105 transition-transform">
-              <Code2 className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="font-semibold tracking-tight text-lg">
-              Code<span className="text-gradient-electric">14</span>
-            </span>
+          <Link to="/" className="flex items-center gap-2 group" aria-label="Code14 — Bosh sahifa">
+            <img
+              src={logo}
+              alt="Code14 logo"
+              className="w-10 h-10 object-contain drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.45)] group-hover:scale-105 transition-transform"
+            />
+            <span className="sr-only">Code14</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-7">
