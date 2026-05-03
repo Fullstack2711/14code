@@ -1,5 +1,6 @@
 # Build TanStack Start (Vite) → dist/client + dist/server (Cloudflare Worker)
-FROM node:22-alpine AS builder
+# Debian slim, not Alpine: wrangler’s `workerd` binary is glibc/linux-x64 — on Alpine you get ENOENT.
+FROM node:22-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -10,7 +11,7 @@ COPY . .
 RUN npm run build
 
 # Run built Worker locally (Miniflare) — matches “wrangler dev” without parent .wrangler conflicts
-FROM node:22-alpine AS runner
+FROM node:22-bookworm-slim AS runner
 
 RUN npm install -g wrangler@4.87.0
 
