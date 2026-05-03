@@ -1,0 +1,108 @@
+import mentorImg from "@/assets/mentor.jpg";
+import { FileCheck, MessageCircle, Star, Users, Zap } from "lucide-react";
+
+export const content = {
+  sectionBadge: "Sizning mentoringiz",
+  titlePrefix: "Yakka emassiz —",
+  titleHighlight: "mentor doim yoningizda",
+  mentors: [
+    {
+      name: "Ibrohimov Zafar",
+      role: "Frontend",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Ganijonov Abusaid",
+      role: "Backend (Python)",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Isoq Usmonov",
+      role: "Backend (C#)",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Ibrohimov Zafar",
+      role: "Backend (Node.js)",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Mansurov Abdulaziz",
+      role: "PM",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Ibrohimov Zafar",
+      role: "Mobile (React Native)",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+    {
+      name: "Yo'lchiyev Abqodir",
+      role: "Mobile (Flutter)",
+      quote: `"Men sizga 14 kunda men o'zim 2 yilda o'rgangan eng muhim narsalarni beraman. Suv yo'q. Faqat ishga olib boradigan bilim."`,
+      status: "Online hozir",
+      image: { src: mentorImg, alt: "Bosh mentor portreti", width: 768, height: 768 },
+      perks: [
+        { icon: Star, label: "5+ yillik developer" },
+        { icon: MessageCircle, label: "1:1 support" },
+        { icon: Zap, label: "Daily review" },
+        { icon: Users, label: "Telegram community" },
+        { icon: FileCheck, label: "CV correction" },
+      ],
+    },
+  ],
+};
