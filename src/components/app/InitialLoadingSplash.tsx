@@ -34,7 +34,7 @@ export function InitialLoadingSplash({ durationMs = 5000, className }: InitialLo
           alt="Code14"
           width={144}
           height={144}
-          className="relative w-36 h-36 object-contain drop-shadow-[0_0_52px_oklch(0.68_0.20_254/0.9)] drop-shadow-[0_0_22px_oklch(0.78_0.18_248/0.6)]"
+          className="relative w-36 h-36 object-contain drop-shadow-[0_0_52px_oklch(0.68_0.20_254/0.9)]"
         />
 
         {/* Orbit dots */}

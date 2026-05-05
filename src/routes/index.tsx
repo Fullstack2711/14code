@@ -8,6 +8,7 @@ import { Roadmap } from "@/components/landing/Roadmap";
 import { Modullar } from "@/components/landing/Modullar";
 import { WhyCourse } from "@/components/landing/WhyCourse";
 import { Mentor } from "@/components/landing/Mentor";
+import { InterviewSupportSection } from "@/components/landing/InterviewSupportSection";
 import { BeforeAfter } from "@/components/landing/BeforeAfter";
 import { Pricing } from "@/components/landing/Pricing";
 import { FAQ } from "@/components/landing/FAQ";
@@ -173,6 +174,7 @@ function Index() {
       <Modullar />
       <WhyCourse />
       <Mentor />
+      <InterviewSupportSection />
       <BeforeAfter />
       <Pricing onCtaClick={openDialog} />
       <FAQ />
