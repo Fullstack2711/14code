@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import { footerText } from "@/mock/data";
 
 export function Footer() {
   return (
@@ -18,13 +19,13 @@ export function Footer() {
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#kurs" className="hover:text-foreground transition-colors">
-              Kurs
+              {footerText.links[0].label}
             </a>
             <a href="#pricing" className="hover:text-foreground transition-colors">
-              Narxlar
+              {footerText.links[1].label}
             </a>
             <a href="#faq" className="hover:text-foreground transition-colors">
-              FAQ
+              {footerText.links[2].label}
             </a>
             <a
               href="https://t.me"
@@ -32,13 +33,13 @@ export function Footer() {
               rel="noreferrer"
               className="hover:text-foreground transition-colors"
             >
-              Telegram
+              {footerText.links[3].label}
             </a>
           </div>
 
-          <div className="text-xs text-muted-foreground">
-            © 2026 Code14. Barcha huquqlar himoyalangan.
-          </div>
+          <p className="text-xs text-muted-foreground">
+            {`${footerText.copyright} © ${new Date().getFullYear()}`}
+          </p>
         </div>
       </div>
     </footer>

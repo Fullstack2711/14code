@@ -2,51 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const plans = [
-  {
-    name: "Starter",
-    price: "300,000",
-    desc: "Video kurs + materiallar",
-    features: [
-      "14 kunlik video darslar",
-      "Barcha materiallar va vazifalar",
-      "Telegram community",
-      "Sertifikat",
-    ],
-    cta: "Tanlash",
-    highlighted: false,
-  },
-  {
-    name: "Standard",
-    price: "500,000",
-    desc: "Kurs + mentor qo'llab-quvvatlash",
-    features: [
-      "Starter'dagi hammasi",
-      "Mentor daily review",
-      "Loyiha feedback",
-      "CV correction",
-      "Priority Telegram support",
-    ],
-    cta: "Joyni Band Qilish",
-    highlighted: true,
-  },
-  {
-    name: "Pro",
-    price: "1,200,000",
-    desc: "Ish topishni kafolatlaymiz",
-    features: [
-      "Standard'dagi hammasi",
-      "1:1 mentor sessions",
-      "LinkedIn correction",
-      "Mock interview (HR + Tech)",
-      "Ish topishga to'g'ridan-to'g'ri yordam",
-      "Kompaniyalarga tavsiya",
-    ],
-    cta: "Pro Joyni Band Qilish",
-    highlighted: false,
-  },
-];
+import { plans, PricingText } from "@/mock/data";
 
 function useCountdown() {
   const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
@@ -58,7 +14,6 @@ function useCountdown() {
       deadline = Date.now() + 1000 * 60 * 60 * 47 + 1000 * 60 * 14;
       localStorage.setItem(KEY, String(deadline));
     }
-
     const tick = () => {
       const diff = Math.max(0, deadline - Date.now());
       const h = Math.floor(diff / 3_600_000);
@@ -74,11 +29,9 @@ function useCountdown() {
 
   return time;
 }
-
 interface PricingProps {
   onCtaClick: () => void;
 }
-
 export function Pricing({ onCtaClick }: PricingProps) {
   const { h, m, s } = useCountdown();
   const fmt = (n: number) => String(n).padStart(2, "0");
@@ -99,14 +52,14 @@ export function Pricing({ onCtaClick }: PricingProps) {
             Narxlar
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            <span className="text-gradient">Joyingizni</span>{" "}
-            <span className="text-gradient-electric">band qiling</span>
+            <span className="text-gradient">{PricingText.title}</span>{" "}
+            <span className="text-gradient-electric">{PricingText.subtitle}</span>
           </h2>
 
           {/* Countdown */}
           <div className="mt-8 inline-flex items-center gap-3 glass-card-strong rounded-2xl px-5 py-3">
             <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Ro'yxat yopiladi:</span>
+            <span className="text-sm text-muted-foreground">{PricingText.description}</span>
             <div className="flex items-center gap-1.5 font-mono font-bold tabular-nums">
               <span className="text-gradient text-lg">{fmt(h)}</span>
               <span className="text-muted-foreground">:</span>

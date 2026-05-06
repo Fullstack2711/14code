@@ -174,7 +174,7 @@ function Index() {
       <Modullar />
       <WhyCourse />
       <Mentor />
-      <InterviewSupportSection />
+      {/* <InterviewSupportSection /> */}
       <BeforeAfter />
       <Pricing onCtaClick={openDialog} />
       <FAQ />

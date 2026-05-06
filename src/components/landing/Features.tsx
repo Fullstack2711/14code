@@ -1,39 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
-import { Code2, Braces, Atom, GitBranch, Rocket, MessageSquare } from "lucide-react";
-
-const features = [
-  {
-    icon: Code2,
-    title: "Frontend Asoslari",
-    desc: "HTML5, CSS3, Flexbox, Grid va to'liq responsive layout. Pixel perfect dizaynni kodga o'tkazish.",
-  },
-  {
-    icon: Braces,
-    title: "JavaScript Mastery",
-    desc: "DOM, API, async/await, ES6+, real-world taskar. Tafakkurni dasturchi miyasiga aylantirish.",
-  },
-  {
-    icon: Atom,
-    title: "React Ecosystem",
-    desc: "Components, Hooks, State management, Router. Zamonaviy React 19 standartlari.",
-  },
-  {
-    icon: GitBranch,
-    title: "Git & GitHub",
-    desc: "Version control, branching, PR workflow. Komandada ishlash madaniyati.",
-  },
-  {
-    icon: Rocket,
-    title: "Portfolio & Deploy",
-    desc: "Real loyihalarni Vercel'ga deploy qilish. Jonli URL bilan portfolio yaratish.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Interview Prep",
-    desc: "HR + Technical mock interview. CV, LinkedIn va ish topish strategiyasi.",
-  },
-];
+import { features } from "@/mock/data";
 
 function FeatureCard({ icon: Icon, title, desc, index }: (typeof features)[0] & { index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);

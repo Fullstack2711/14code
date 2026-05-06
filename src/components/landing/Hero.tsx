@@ -1,51 +1,13 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, Sparkles, Play } from "lucide-react";
+import { ArrowRight, Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BallpitBackground } from "@/components/ui/interactive-hero-backgrounds";
+import { codeLines, heroTextCta, stats } from "@/mock/data";
 
 interface HeroProps {
   onCtaClick: () => void;
 }
-
-const codeLines: { tokens: { text: string; color?: string }[] }[] = [
-  { tokens: [{ text: "// 14 kunlik transformatsiya", color: "text-muted-foreground" }] },
-  {
-    tokens: [
-      { text: "const", color: "text-[#c084fc]" },
-      { text: " ", color: "text-foreground" },
-      { text: "you", color: "text-[#60a5fa]" },
-      { text: " = ", color: "text-foreground" },
-      { text: "await", color: "text-[#c084fc]" },
-      { text: " ", color: "text-foreground" },
-      { text: "learn", color: "text-[#fbbf24]" },
-      { text: "({", color: "text-foreground" },
-    ],
-  },
-  {
-    tokens: [
-      { text: "  duration: ", color: "text-foreground" },
-      { text: "'14 days'", color: "text-[#86efac]" },
-      { text: ",", color: "text-foreground" },
-    ],
-  },
-  {
-    tokens: [
-      { text: "  practice: ", color: "text-foreground" },
-      { text: "'100%'", color: "text-[#86efac]" },
-      { text: ",", color: "text-foreground" },
-    ],
-  },
-  {
-    tokens: [
-      { text: "  result: ", color: "text-foreground" },
-      { text: "'junior-dev'", color: "text-[#86efac]" },
-    ],
-  },
-  { tokens: [{ text: "});", color: "text-foreground" }] },
-  { tokens: [] },
-  { tokens: [{ text: "// → Ofer qo'lingizda", color: "text-muted-foreground" }] },
-];
 
 function CodeEditor() {
   const [visibleLines, setVisibleLines] = useState(0);
@@ -103,19 +65,17 @@ function CodeEditor() {
           </span>
           <span>UTF-8</span>
         </div>
-        <div className="text-primary font-semibold">+87% interview rate</div>
+        <div className="text-primary font-semibold">{heroTextCta.perks[0].title}</div>
       </div>
     </div>
   );
 }
 
-const stats = [
-  { value: "1,200+", label: "Bitiruvchi" },
-  { value: "87%", label: "Ish topdi" },
-  { value: "14", label: "Kun" },
-];
-
 export function Hero({ onCtaClick }: HeroProps) {
+  const titleWords = heroTextCta.title.split(" ");
+  const titleAccent = titleWords.slice(0, 2).join(" ");
+  const titleRest = titleWords.slice(2).join(" ");
+
   return (
     <section className="relative min-h-screen pt-28 pb-16 overflow-hidden flex items-center">
       {/* Background */}
@@ -166,20 +126,16 @@ export function Hero({ onCtaClick }: HeroProps) {
             </motion.button> */}
 
             <h1 className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold tracking-tight leading-[1.05] lg:leading-[1.02]">
-              <span className="block whitespace-nowrap text-center text-foreground/90">
-                2 Haftada
+              <span className="block whitespace-nowrap text-center text-gradient-electric drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.35)]">
+                {titleAccent}
               </span>
-              <span className="block mt-1 sm:mt-2 whitespace-nowrap text-left">
-                <span className="text-gradient-electric drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.35)]">
-                  Junior
-                </span>{" "}
-                <span className="text-foreground">Dasturchi</span>
+              <span className="block mt-1 sm:mt-2 whitespace-nowrap text-left text-foreground">
+                {titleRest}
               </span>
             </h1>
 
             <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed text-pretty">
-              100% amaliy kurs. Real loyihalar, mentor qo'llab-quvvatlashi va ishga joylashish
-              kafolati — <span className="text-foreground font-medium">14 kunda</span>.
+              {heroTextCta.description}
             </p>
 
             {/* CTAs */}
@@ -189,7 +145,7 @@ export function Hero({ onCtaClick }: HeroProps) {
                 size="lg"
                 className="group bg-linear-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 rounded-2xl h-14 px-7 text-base font-semibold shadow-[0_10px_40px_-10px_oklch(0.68_0.20_254/0.7)] transition-all hover:shadow-[0_14px_50px_-10px_oklch(0.68_0.20_254/0.85)] hover:-translate-y-0.5"
               >
-                Joyimni Band Qilish
+                {heroTextCta.buttonText}
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -199,7 +155,7 @@ export function Hero({ onCtaClick }: HeroProps) {
                 className="group glass-card hover:bg-white/5 rounded-2xl h-14 px-7 text-base font-medium border-white/10 text-foreground"
               >
                 <Play className="w-3.5 h-3.5 mr-1 fill-primary text-primary" />
-                Bepul Demo Dars
+                {heroTextCta.secondaryButtonText}
               </Button>
             </div>
 
@@ -207,15 +163,15 @@ export function Hero({ onCtaClick }: HeroProps) {
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-primary" />
-                <span>3 kun pul qaytarish</span>
+                <span>{heroTextCta.perks[0].title}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-primary" />
-                Sertifikat
+                <span>{heroTextCta.perks[1].title}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-primary" />
-                Karta orqali to'lov
+                <span>{heroTextCta.perks[2].title}</span>
               </div>
             </div>
 
@@ -263,7 +219,7 @@ export function Hero({ onCtaClick }: HeroProps) {
                 className="absolute -top-4 -left-5 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden sm:flex items-center gap-2"
               >
                 <Check className="w-3.5 h-3.5 text-primary" />
-                Real loyiha
+                {heroTextCta.perks[0].title}
               </motion.div>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
@@ -271,16 +227,8 @@ export function Hero({ onCtaClick }: HeroProps) {
                 className="absolute -bottom-4 -right-4 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden sm:flex items-center gap-2"
               >
                 <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
-                Live deploy
+                {heroTextCta.perks[1].title}
               </motion.div>
-              {/* <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="absolute top-1/2 -right-6 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden md:flex items-center gap-2"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-primary" />
-                AI mentor
-              </motion.div> */}
             </div>
           </motion.div>
         </div>

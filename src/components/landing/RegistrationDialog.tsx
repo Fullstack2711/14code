@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import logo from "@/assets/logo.png";
+import { RegistrationText } from "@/mock/data";
 
 const SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL as string | undefined;
 
@@ -35,7 +36,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
     plan: "standard",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     try {
@@ -69,17 +70,17 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
             <img src={logo} alt="Logo" className="w-full h-full object-contain" />
           </div>
           <DialogTitle className="text-2xl text-center font-bold tracking-tight">
-            <span className="text-gradient">Joyingizni band qiling</span>
+            <span className="text-gradient">{RegistrationText.title}</span>
           </DialogTitle>
           <DialogDescription className="text-center">
-            Ma'lumotlaringizni qoldiring — 24 soat ichida bog'lanamiz.
+            {RegistrationText.description}
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-1.5">
             <Label htmlFor="name" className="text-xs">
-              Ism Familiya
+              {RegistrationText.nameLabel}
             </Label>
             <Input
               id="name"
@@ -92,7 +93,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="phone" className="text-xs">
-              Telefon raqam
+              {RegistrationText.phoneLabel}
             </Label>
             <Input
               id="phone"
@@ -106,7 +107,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="email" className="text-xs">
-              Email
+              {RegistrationText.emailLabel}
             </Label>
             <Input
               id="email"
@@ -119,15 +120,17 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
             />
           </div>
           <div className="space-y-1.5">
-            <Label className="text-xs">Tarif</Label>
+            <Label className="text-xs">{RegistrationText.planLabel}</Label>
             <Select value={form.plan} onValueChange={(v) => setForm({ ...form, plan: v })}>
               <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-11">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="starter">Starter — 300,000 so'm</SelectItem>
-                <SelectItem value="standard">Standard — 500,000 so'm</SelectItem>
-                <SelectItem value="pro">Pro — 1,200,000 so'm</SelectItem>
+                {RegistrationText.plans.map((p) => (
+                  <SelectItem key={p.value} value={p.value}>
+                    {p.label} — {p.price}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -137,12 +140,10 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
             disabled={submitting}
             className="w-full h-12 rounded-2xl bg-linear-to-r from-primary to-primary-glow text-primary-foreground font-semibold shadow-[0_10px_30px_-10px_oklch(0.68_0.20_254/0.7)] hover:opacity-95"
           >
-            {submitting ? "Yuborilmoqda..." : "Joyni Band Qilish"}
+            {submitting ? "Yuborilmoqda..." : RegistrationText.submitButtonText}
           </Button>
 
-          <p className="text-xs text-center text-muted-foreground">
-            Yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz.
-          </p>
+          <p className="text-xs text-center text-muted-foreground">{RegistrationText.disclaimer}</p>
         </form>
       </DialogContent>
     </Dialog>

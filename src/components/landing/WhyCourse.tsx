@@ -1,41 +1,7 @@
+import { reasons, WhyCourseText } from "@/mock/data";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
-import { Clock, Code2, Rocket, Trophy, CheckCircle2, ArrowRight } from "lucide-react";
-
-const reasons = [
-  {
-    num: "01",
-    icon: Clock,
-    title: "14 kun. 6 oy emas.",
-    desc: "Boshqalar suvga to'ldirgan dasturni biz siqib, faqat ish uchun kerakli qismini qoldirdik.",
-    metric: "13x",
-    metricLabel: "tezroq",
-  },
-  {
-    num: "02",
-    icon: Code2,
-    title: "Birinchi kundan kod",
-    desc: "Nazariya yo'q. Har bir dars — real loyiha. Birinchi soatdan o'z qo'lingiz bilan yozasiz.",
-    metric: "100%",
-    metricLabel: "amaliyot",
-  },
-  {
-    num: "03",
-    icon: Rocket,
-    title: "Real bozor stack'i",
-    desc: "HTML, CSS, JavaScript, React, Git — Toshkent ish e'lonlarida eng ko'p so'raladigan to'plam.",
-    metric: "6",
-    metricLabel: "texnologiya",
-  },
-  {
-    num: "04",
-    icon: Trophy,
-    title: "Ish topishgacha yo'naltiramiz",
-    desc: "CV, portfolio, mock interview va tanish kompaniyalarga tavsiya — narx ichida.",
-    metric: "300+",
-    metricLabel: "ishga kirgan",
-  },
-];
 
 function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -142,14 +108,14 @@ export function WhyCourse() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card text-xs font-medium text-silver mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Nima uchun Code14
+            {WhyCourseText.title}
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-            To'rt sabab — <span className="text-gradient-electric">14 kun yetarli.</span>
+            {WhyCourseText.subtitle}{" "}
+            <span className="text-gradient-electric">{WhyCourseText.subtitle}</span>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Nazariya emas, ish bozori uchun siqilgan amaliy dastur. Har bir element bitta maqsadga
-            xizmat qiladi — sizni Junior Developer qilish.
+            {WhyCourseText.description}
           </p>
         </motion.div>
 

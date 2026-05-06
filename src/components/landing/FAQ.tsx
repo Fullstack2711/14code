@@ -5,29 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    q: "Haqiqatan ham 2 haftada Junior Developer bo'lish mumkinmi?",
-    a: "Ha, agar har kuni 4-6 soat to'liq bag'ishlasangiz. Biz suvga vaqt sarflamaymiz — faqat ishga kerakli bilim. 1200+ talaba bunga amin bo'lgan.",
-  },
-  {
-    q: "Nol bilim bilan kirsam bo'ladimi?",
-    a: "Ha, kurs noldan boshlanadi. Muhimi — vaqt ajratish va mentor ko'rsatmalarini bajarish. Kompyuter va internet — yetarli.",
-  },
-  {
-    q: "Ish topishga yordam berasizmi?",
-    a: "Pro tarif bilan: CV/LinkedIn correction, mock interview, ish e'lonlari va to'g'ridan-to'g'ri kompaniyalarga tavsiya. 300+ talabamiz allaqachon ishga kirgan.",
-  },
-  {
-    q: "Darslar yozib olinadimi?",
-    a: "Ha, barcha darslar yozib olinadi va sizda umrbod qoladi. Istalgan vaqt qayta ko'rishingiz mumkin.",
-  },
-  {
-    q: "Agar yoqmasa, pul qaytariladimi?",
-    a: "Ha, dastlabki 3 kun ichida hech qanday savolsiz 100% pul qaytariladi.",
-  },
-];
+import { faqs } from "@/mock/data";
 
 export function FAQ() {
   return (

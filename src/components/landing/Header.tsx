@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
+import { headerLinks } from "@/mock/data";
 
 interface HeaderProps {
   onCtaClick: () => void;
@@ -19,15 +20,6 @@ export function Header({ onCtaClick }: HeaderProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const links = [
-    { href: "#kurs", label: "Kurs" },
-    // { href: "#roadmap", label: "Roadmap" },
-    { href: "#mentor", label: "Mentor" },
-    { href: "#modullar", label: "Modullar" },
-    { href: "#pricing", label: "Narxlar" },
-    { href: "#faq", label: "FAQ" },
-  ];
 
   return (
     <header
@@ -55,7 +47,7 @@ export function Header({ onCtaClick }: HeaderProps) {
           </Link>
 
           <nav className="hidden md:flex items-center gap-7">
-            {links.map((l) => (
+            {headerLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -86,7 +78,7 @@ export function Header({ onCtaClick }: HeaderProps) {
 
         {open && (
           <div className="md:hidden mt-2 glass-card-strong rounded-2xl p-4 flex flex-col gap-3">
-            {links.map((l) => (
+            {headerLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}

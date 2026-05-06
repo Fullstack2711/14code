@@ -1,15 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useCountUp } from "@/hooks/use-count-up";
-
-const stats = [
-  { value: 1200, suffix: "+", label: "Talaba" },
-  { value: 300, suffix: "+", label: "Ishga kirgan" },
-  { value: 95, suffix: "%", label: "Mamnunlik" },
-  { value: 40, suffix: "+", label: "Real loyiha" },
-];
-
-const companies = ["Google", "Amazon", "Meta", "Microsoft", "Uber", "Netflix", "Spotify", "Airbnb"];
+import { SocialProofCompanies, SocialProofHeadingText, SocialProofText } from "@/mock/data";
 
 function Stat({
   value,
@@ -49,25 +41,20 @@ export function SocialProof() {
           className="glass-card rounded-3xl p-8 sm:p-12"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            {stats.map((s) => (
+            {SocialProofText.map((s) => (
               <Stat key={s.label} {...s} inView={inView} />
             ))}
           </div>
 
           <div className="mt-12 pt-10 border-t border-white/5">
             <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-              Bitiruvchilarimiz ishlaydigan kompaniyalar
+              {SocialProofHeadingText.title}
             </p>
             <div className="relative overflow-hidden">
               <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-background to-transparent z-10" />
               <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-background to-transparent z-10" />
-              <div
-                className="flex gap-12 animate-[shimmer_30s_linear_infinite]"
-                style={{
-                  animation: "scroll 30s linear infinite",
-                }}
-              >
-                {[...companies, ...companies].map((c, i) => (
+              <div className="flex gap-12" style={{ animation: "scroll 30s linear infinite" }}>
+                {[...SocialProofCompanies, ...SocialProofCompanies].map((c, i) => (
                   <div
                     key={i}
                     className="text-2xl sm:text-3xl font-semibold text-muted-foreground/60 hover:text-foreground transition-colors whitespace-nowrap tracking-tight"

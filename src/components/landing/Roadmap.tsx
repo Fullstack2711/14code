@@ -1,16 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const days = [
-  { day: "1-kun", title: "HTML & CSS", desc: "Semantic markup, modern CSS, BEM" },
-  { day: "3-kun", title: "Responsive Layout", desc: "Flexbox, Grid, Mobile-first" },
-  { day: "5-kun", title: "JavaScript", desc: "ES6+, DOM, Events, Logic" },
-  { day: "7-kun", title: "API & Async", desc: "Fetch, Promises, async/await" },
-  { day: "9-kun", title: "React Basics", desc: "Components, Props, State, Hooks" },
-  { day: "11-kun", title: "Full Project", desc: "Real React + API loyiha" },
-  { day: "13-kun", title: "CV + GitHub", desc: "Portfolio, deploy, LinkedIn" },
-  { day: "14-kun", title: "Interview & Apply", desc: "Mock interview, ish topish" },
-];
+import { days, RoadmapText } from "@/mock/data";
 
 export function Roadmap() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,15 +24,13 @@ export function Roadmap() {
           className="text-center max-w-2xl mx-auto mb-20"
         >
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
-            14 kun · Aniq reja
+            {RoadmapText.plan}
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            <span className="text-gradient">Sizning</span>{" "}
-            <span className="text-gradient-electric">Roadmap</span>
+            <span className="text-gradient">{RoadmapText.title}</span>{" "}
+            <span className="text-gradient-electric">{RoadmapText.subtitle}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Har bir kun aniq natijaga olib boradi. Suvga qaytmaymiz — faqat oldinga.
-          </p>
+          <p className="mt-4 text-muted-foreground">{RoadmapText.description}</p>
         </motion.div>
 
         <div ref={ref} className="relative">

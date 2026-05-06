@@ -1,17 +1,6 @@
+import { afterFeedback, beforeFeedback } from "@/mock/data";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, X } from "lucide-react";
-
-const beforeFeedback = [
-  "CV va portfolio bo'yicha tahlil",
-  "Intervyuda tushishi mumkin bo'lgan savollarga tayyorgarlik rejasi",
-  "Sinov intervyu va aniq feedback",
-];
-
-const afterFeedback = [
-  "Qilingan xatolar bo'yicha to'liq tahlil",
-  "Kamchiliklarni to'ldirish uchun bosqichma-bosqich qo'llanma",
-  "Keyingi intervyugacha nazorat checklist",
-];
 
 export function InterviewSupportSection() {
   return (

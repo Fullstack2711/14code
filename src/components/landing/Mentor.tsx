@@ -1,21 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { content } from "@/mock/data";
+import { content, TABS } from "@/mock/data";
 
 const variants = {
   enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
   center: { opacity: 1, x: 0 },
   exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
 };
-
-const TABS = [
-  { label: "Barchasi", key: "all" },
-  { label: "Frontend", key: "Frontend" },
-  { label: "Backend", key: "Backend" },
-  { label: "Mobile", key: "Mobile" },
-  { label: "PM", key: "PM" },
-];
 
 export function Mentor() {
   const [tab, setTab] = useState("all");
@@ -113,9 +105,6 @@ export function Mentor() {
                 </div>
 
                 <div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-                    Bosh mentor
-                  </div>
                   <h3 className="text-3xl font-bold tracking-tight">{m.name}</h3>
                   <p className="mt-1 text-muted-foreground">{m.role}</p>
                   <p className="mt-5 text-foreground/85 leading-relaxed">{m.quote}</p>

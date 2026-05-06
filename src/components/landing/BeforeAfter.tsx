@@ -1,19 +1,6 @@
+import { after, before } from "@/mock/data";
 import { motion } from "framer-motion";
 import { ArrowRight, X, Check } from "lucide-react";
-
-const before = [
-  "Bilim yo'q, qaerdan boshlashni bilmaydi",
-  "Ish topa olmayapti, javoblar kelmaydi",
-  "YouTube videolardan chalkashib qolgan",
-  "Portfolio yo'q, CV bo'sh",
-];
-
-const after = [
-  "Real loyihalar bilan to'la portfolio",
-  "Interview o'tkazadi, taklif oladi",
-  "Aniq texnologiyalarni biladi",
-  "Junior Developer sifatida ishga kirgan",
-];
 
 export function BeforeAfter() {
   return (
