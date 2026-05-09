@@ -54,7 +54,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
         description: "24 soat ichida siz bilan bog'lanamiz.",
       });
       onOpenChange(false);
-      setForm({ name: "", phone: "", email: "", plan: "standard" });
+      setForm(() => ({ name: "", phone: "", email: "", plan: "standard" }));
     } catch {
       toast.error("Xatolik yuz berdi. Qayta urinib ko'ring.");
     } finally {
@@ -86,7 +86,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
               id="name"
               required
               value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="Sardor Ahmedov"
               className="bg-white/5 border-white/10 rounded-xl h-11"
             />
@@ -100,7 +100,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
               required
               type="tel"
               value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
               placeholder="+998 90 123 45 67"
               className="bg-white/5 border-white/10 rounded-xl h-11"
             />
@@ -114,14 +114,17 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
               required
               type="email"
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
               placeholder="email@example.com"
               className="bg-white/5 border-white/10 rounded-xl h-11"
             />
           </div>
           <div className="space-y-1.5">
             <Label className="text-xs">{RegistrationText.planLabel}</Label>
-            <Select value={form.plan} onValueChange={(v) => setForm({ ...form, plan: v })}>
+            <Select
+              value={form.plan}
+              onValueChange={(v) => setForm((prev) => ({ ...prev, plan: v }))}
+            >
               <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-11">
                 <SelectValue />
               </SelectTrigger>

@@ -42,7 +42,7 @@ export function FinalCta({ onCtaClick }: FinalCtaProps) {
               <br />
               <span className="text-gradient-electric">{finalCta.description}</span>
               <br />
-              <span className="text-foreground">{finalCta.description}</span>
+              {/* <span className="text-foreground">{finalCta.description}</span> */}
             </h2>
 
             <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">

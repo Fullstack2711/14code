@@ -34,7 +34,7 @@ function CodeEditor() {
       <div className="p-5 min-h-[240px]">
         {codeLines.map((line, i) => (
           <div
-            key={i}
+            key={`code-line-${i}-${line.tokens.map((t) => t.text).join("")}`}
             className="flex gap-4 transition-opacity duration-300"
             style={{ opacity: i < visibleLines ? 1 : 0.15 }}
           >
@@ -44,7 +44,7 @@ function CodeEditor() {
                 <span>&nbsp;</span>
               ) : (
                 line.tokens.map((t, j) => (
-                  <span key={j} className={t.color || "text-foreground"}>
+                  <span key={`tok-${j}-${t.text}`} className={t.color || "text-foreground"}>
                     {t.text}
                   </span>
                 ))
