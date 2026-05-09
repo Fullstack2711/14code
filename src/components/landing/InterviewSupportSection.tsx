@@ -1,10 +1,19 @@
 import { afterFeedback, beforeFeedback } from "@/mock/data";
 import { m } from "framer-motion";
 import { ArrowRight, Check, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export function InterviewSupportSection() {
+interface InterviewSupportSectionProps {
+  onCtaClick: () => void;
+}
+
+export function InterviewSupportSection({ onCtaClick }: InterviewSupportSectionProps) {
   return (
-    <section id="interview-support" className="relative py-24 sm:py-32">
+    <section
+      id="interview-support"
+      aria-labelledby="interview-support-heading"
+      className="relative py-24 sm:py-32"
+    >
       <div className="mx-auto max-w-6xl px-4">
         <m.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,13 +23,29 @@ export function InterviewSupportSection() {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
-            Intervyu tayyorlov
+            Alohida xizmat
           </div>
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
-            Har bir sohadan <span className="text-gradient-electric">intervyu yordami</span>
+          <h2
+            id="interview-support-heading"
+            className="text-4xl sm:text-5xl font-semibold tracking-tight"
+          >
+            Intervyu olib berish <span className="text-gradient-electric">xizmati</span>
           </h2>
-          <div className="mt-4 inline-flex items-center rounded-full bg-primary/15 px-4 py-1.5 text-sm font-semibold text-primary">
-            Intervyu to'lovi: 100 000 so'm
+          <p className="mt-4 text-muted-foreground">
+            Frontend, Backend yoki Mobile yo'nalishi bo'yicha real intervyu formatida savol-javob,
+            feedback va keyingi qadamlar.
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="inline-flex items-center rounded-full bg-primary/15 px-4 py-1.5 text-sm font-semibold text-primary">
+              Narx: 100 000 so'm
+            </div>
+            <Button
+              onClick={onCtaClick}
+              className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Intervyuga yozilish
+              <ArrowRight className="ml-1 size-4" />
+            </Button>
           </div>
         </m.div>
 

@@ -169,7 +169,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [open, setOpen] = useState(false);
-  const openDialog = () => setOpen(true);
+  const [selectedPlan, setSelectedPlan] = useState("standard");
+  const openDialog = (plan?: unknown) => {
+    setSelectedPlan(typeof plan === "string" ? plan : "standard");
+    setOpen(true);
+  };
 
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -181,13 +185,13 @@ function Index() {
       <Modullar />
       <WhyCourse />
       <Mentor />
-      {/* <InterviewSupportSection /> */}
+      <InterviewSupportSection onCtaClick={() => openDialog("interview")} />
       <BeforeAfter />
       <Pricing onCtaClick={openDialog} />
       <FAQ />
       <FinalCta onCtaClick={openDialog} />
       <Footer />
-      <RegistrationDialog open={open} onOpenChange={setOpen} />
+      <RegistrationDialog open={open} onOpenChange={setOpen} defaultPlan={selectedPlan} />
       <Toaster theme="dark" />
     </main>
   );

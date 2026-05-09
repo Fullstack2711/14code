@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -25,9 +25,14 @@ const SHEETS_URL = import.meta.env.VITE_GOOGLE_SHEETS_URL as string | undefined;
 interface RegistrationDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  defaultPlan?: string;
 }
 
-export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogProps) {
+export function RegistrationDialog({
+  open,
+  onOpenChange,
+  defaultPlan = "standard",
+}: RegistrationDialogProps) {
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -35,6 +40,11 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
     email: "",
     plan: "standard",
   });
+
+  useEffect(() => {
+    if (!open) return;
+    setForm((prev) => ({ ...prev, plan: defaultPlan }));
+  }, [defaultPlan, open]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

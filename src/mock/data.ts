@@ -452,11 +452,17 @@ export const RegistrationText = {
   planLabel: "Tarif",
   disclaimer: "Yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz.",
   submitButtonText: "Joyni Band Qilish",
-  plans: plans.map((p) => ({
-    value: p.name.toLowerCase(),
-    label: p.name,
-    price: p.price,
-  })),
+  plans: plans
+    .map((p) => ({
+      value: p.name.toLowerCase(),
+      label: p.name,
+      price: p.price,
+    }))
+    .concat({
+      value: "interview",
+      label: "Intervyu xizmati",
+      price: "100,000",
+    }),
 } as const;
 export const days = [
   { day: "1-kun", title: "HTML & CSS", desc: "Semantic markup, modern CSS, BEM" },
