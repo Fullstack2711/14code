@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
@@ -13,6 +14,8 @@ interface HeaderProps {
 export function Header({ onCtaClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     let frame = 0;
@@ -39,6 +42,13 @@ export function Header({ onCtaClick }: HeaderProps) {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme !== "light" : true;
+  const nextTheme = isDark ? "light" : "dark";
 
   return (
     <header
@@ -78,6 +88,14 @@ export function Header({ onCtaClick }: HeaderProps) {
           </nav>
 
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setTheme(nextTheme)}
+              className="inline-flex size-9 items-center justify-center rounded-xl border border-border bg-background/40 text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+              aria-label={isDark ? "Light mode yoqish" : "Dark mode yoqish"}
+            >
+              {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            </button>
             <Button
               onClick={onCtaClick}
               size="sm"
@@ -107,6 +125,14 @@ export function Header({ onCtaClick }: HeaderProps) {
                 {l.label}
               </a>
             ))}
+            <button
+              type="button"
+              onClick={() => setTheme(nextTheme)}
+              className="flex items-center justify-center gap-2 rounded-xl border border-border bg-background/40 px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+              {isDark ? "Light mode" : "Dark mode"}
+            </button>
             <Button
               onClick={() => {
                 setOpen(false);

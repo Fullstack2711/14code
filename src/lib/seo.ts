@@ -30,7 +30,7 @@ export const GLOBAL_META = [
   { charSet: "utf-8" },
   { name: "viewport", content: "width=device-width, initial-scale=1" },
   { name: "theme-color", content: "#0b0b0f" },
-  { name: "color-scheme", content: "dark" },
+  { name: "color-scheme", content: "dark light" },
   { name: "format-detection", content: "telephone=no" },
   { name: "application-name", content: SITE_NAME },
   { name: "apple-mobile-web-app-title", content: SITE_NAME },

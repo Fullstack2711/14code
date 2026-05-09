@@ -25,10 +25,10 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
       <div
         ref={ref}
         onMouseMove={handleMove}
-        className="group relative rounded-3xl border border-white/10 backdrop-blur-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:-translate-y-0.5"
+        className="group relative rounded-3xl border border-border backdrop-blur-2xl overflow-hidden transition-all duration-500 hover:border-primary/30 hover:-translate-y-0.5"
         style={{
           background:
-            "radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), oklch(0.68 0.20 254 / 0.12), transparent 45%), linear-gradient(135deg, oklch(1 0 0 / 0.05) 0%, oklch(1 0 0 / 0.015) 100%)",
+            "radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), oklch(0.68 0.20 254 / 0.12), transparent 45%), var(--reason-card-bg)",
         }}
       >
         {/* Top hairline glow on hover */}
@@ -37,17 +37,10 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
         <div className="grid grid-cols-12 gap-6 p-6 sm:p-8 lg:p-10 items-center">
           {/* Number — huge */}
           <div className="col-span-3 sm:col-span-2">
-            <div
-              className="text-5xl sm:text-7xl lg:text-8xl font-bold leading-none tabular-nums tracking-tighter"
-              style={{
-                background:
-                  "linear-gradient(180deg, oklch(1 0 0 / 0.85) 0%, oklch(1 0 0 / 0.05) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {r.num}
+            <div className="glass-card inline-flex items-center justify-center rounded-2xl px-4 py-2 sm:px-5 sm:py-3">
+              <span className="glass-num text-4xl sm:text-6xl lg:text-7xl font-bold leading-none tabular-nums tracking-tighter">
+                {r.num}
+              </span>
             </div>
           </div>
 
@@ -57,7 +50,7 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
               <div className="size-9 rounded-xl bg-linear-to-br from-primary/25 to-transparent border border-primary/25 flex items-center justify-center shrink-0">
                 <Icon className="size-4 text-primary" />
               </div>
-              <div className="h-px flex-1 bg-linear-to-r from-white/15 to-transparent" />
+              <div className="h-px flex-1" style={{ background: "var(--hairline-line)" }} />
             </div>
             <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">
               {r.title}

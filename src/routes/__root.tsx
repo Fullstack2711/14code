@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 
 import appCss from "../styles.css?url";
 import { GLOBAL_LINKS, GLOBAL_META, SEO_DESCRIPTION, SEO_TITLE } from "@/lib/seo";
@@ -44,7 +45,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="uz" className="dark">
+    <html lang="uz" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -58,8 +59,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <LazyMotion features={domAnimation} strict>
-      <Outlet />
-    </LazyMotion>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="code14-theme">
+      <LazyMotion features={domAnimation} strict>
+        <Outlet />
+      </LazyMotion>
+    </ThemeProvider>
   );
 }

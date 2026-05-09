@@ -74,7 +74,7 @@ export function RegistrationDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border-white/15 bg-[#080b12] shadow-[0_30px_90px_-24px_oklch(0_0_0/0.95),0_0_70px_-35px_oklch(0.68_0.20_254/0.75)] sm:max-w-md rounded-3xl">
+      <DialogContent className="border border-border bg-card text-foreground shadow-[var(--shadow-elevation),var(--shadow-glow-soft)] sm:max-w-md rounded-3xl">
         <DialogHeader>
           <div className="mx-auto mb-2 size-12 rounded-2xl overflow-hidden flex items-center justify-center">
             <img src={logo} alt="Logo" className="w-full h-full object-contain" />
@@ -98,7 +98,7 @@ export function RegistrationDialog({
               value={form.name}
               onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="Sardor Ahmedov"
-              className="bg-white/5 border-white/10 rounded-xl h-11"
+              className="bg-secondary/60 border-border rounded-xl h-11"
             />
           </div>
           <div className="space-y-1.5">
@@ -112,7 +112,7 @@ export function RegistrationDialog({
               value={form.phone}
               onChange={(e) => setForm((prev) => ({ ...prev, phone: e.target.value }))}
               placeholder="+998 90 123 45 67"
-              className="bg-white/5 border-white/10 rounded-xl h-11"
+              className="bg-secondary/60 border-border rounded-xl h-11"
             />
           </div>
           <div className="space-y-1.5">
@@ -126,7 +126,7 @@ export function RegistrationDialog({
               value={form.email}
               onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
               placeholder="email@example.com"
-              className="bg-white/5 border-white/10 rounded-xl h-11"
+              className="bg-secondary/60 border-border rounded-xl h-11"
             />
           </div>
           <div className="space-y-1.5">
@@ -135,7 +135,7 @@ export function RegistrationDialog({
               value={form.plan}
               onValueChange={(v) => setForm((prev) => ({ ...prev, plan: v }))}
             >
-              <SelectTrigger className="bg-white/5 border-white/10 rounded-xl h-11">
+              <SelectTrigger className="bg-secondary/60 border-border rounded-xl h-11">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -151,7 +151,7 @@ export function RegistrationDialog({
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full h-12 rounded-2xl bg-linear-to-r from-primary to-primary-glow text-primary-foreground font-semibold shadow-[0_10px_30px_-10px_oklch(0.68_0.20_254/0.7)] hover:opacity-95"
+            className="w-full h-12 rounded-2xl bg-linear-to-r from-primary to-primary-glow text-primary-foreground font-semibold shadow-(--shadow-glow-soft) hover:opacity-95"
           >
             {submitting ? "Yuborilmoqda..." : RegistrationText.submitButtonText}
           </Button>
