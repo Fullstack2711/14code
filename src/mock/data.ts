@@ -108,7 +108,7 @@ export const content = {
 };
 
 export const before = [
-  "Bilim yo'q, qaerdan boshlashni bilmaydi",
+  "Bilim yo'q, qayerdan boshlashni bilmaydi",
   "Ish topa olmayapti, javoblar kelmaydi",
   "YouTube videolardan chalkashib qolgan",
   "Portfolio yo'q, CV bo'sh",

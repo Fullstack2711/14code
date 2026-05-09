@@ -1,5 +1,11 @@
 services:
   web:
     build: .
+    restart: unless-stopped
     ports:
-      - "${PORT:-8787}:8787"
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - VITE_SITE_URL=${VITE_SITE_URL:-https://code14.uz}
+      - VITE_OG_IMAGE_URL=${VITE_OG_IMAGE_URL:-}
+      - VITE_GOOGLE_SHEETS_URL=${VITE_GOOGLE_SHEETS_URL:-}

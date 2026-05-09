@@ -1,26 +1,26 @@
-# Build TanStack Start (Vite) → dist/client + dist/server (Cloudflare Worker)
-# Debian slim, not Alpine: wrangler’s `workerd` binary is glibc/linux-x64 — on Alpine you get ENOENT.
-FROM node:22-bookworm-slim AS builder
+# ─── Stage 1: Build ──────────────────────────────────────────────────────────
+FROM oven/bun:1.2-debian AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+# Install dependencies first (layer cache)
+COPY package.json bun.lockb ./
+RUN bun install --frozen-lockfile
 
+# Copy source and build for Node.js server
 COPY . .
-RUN npm run build
+RUN NODE_SERVER=1 bun run build
 
-# Run built Worker locally (Miniflare) — matches “wrangler dev” without parent .wrangler conflicts
+# ─── Stage 2: Production ─────────────────────────────────────────────────────
 FROM node:22-bookworm-slim AS runner
 
-RUN npm install -g wrangler@4.87.0
+WORKDIR /app
 
-WORKDIR /app/dist/server
+# Copy only the built output (.output from Nitro node-server preset)
+COPY --from=builder /app/.output ./
 
-COPY --from=builder /app/dist/server ./
-COPY --from=builder /app/dist/client ../client
+ENV NODE_ENV=production
+ENV PORT=3000
+EXPOSE 3000
 
-ENV PORT=8787
-EXPOSE 8787
-
-CMD ["wrangler", "dev", "--local", "--ip", "0.0.0.0", "--port", "8787", "--show-interactive-dev-session", "false"]
+CMD ["node", "server/index.mjs"]

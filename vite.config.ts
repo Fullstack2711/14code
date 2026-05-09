@@ -7,12 +7,18 @@
 //
 // Vercel sets VERCEL=1 during build. TanStack Start’s default output targets Cloudflare Workers
 // (no root index.html). Nitro emits a Vercel-compatible output; disable the Cloudflare plugin there.
+// NODE_SERVER=1 builds a standalone Node.js server via Nitro for VPS / Docker deployment.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";
 
 const isVercel = process.env.VERCEL === "1";
+const isNode = process.env.NODE_SERVER === "1";
 
 export default defineConfig({
-  cloudflare: isVercel ? false : undefined,
-  plugins: isVercel ? [nitro()] : [],
+  cloudflare: isVercel || isNode ? false : undefined,
+  plugins: isVercel
+    ? [nitro()]
+    : isNode
+      ? [nitro({ preset: "node-server" })]
+      : [],
 });
