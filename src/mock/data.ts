@@ -122,7 +122,7 @@ export const after = [
 export const faqs = [
   {
     q: "Haqiqatan ham 2 haftada Junior Developer bo'lish mumkinmi?",
-    a: "Ha, agar har kuni 4-6 soat to'liq bag'ishlasangiz. Biz suvga vaqt sarflamaymiz — faqat ishga kerakli bilim. 1200+ talaba bunga amin bo'lgan.",
+    a: "Ha, agar har kuni 4-6 soat to'liq bag'ishlasangiz. Biz suvga vaqt sarflamaymiz — faqat ishga kerakli bilim. 200+ talaba bunga amin bo'lgan.",
   },
   {
     q: "Nol bilim bilan kirsam bo'ladimi?",
@@ -138,7 +138,7 @@ export const faqs = [
   },
   {
     q: "Agar yoqmasa, pul qaytariladimi?",
-    a: "Ha, dastlabki 3 kun ichida hech qanday savolsiz 100% pul qaytariladi.",
+    a: "Ha, dastlabki 1 kun ichida hech qanday savolsiz 100% pul qaytariladi.",
   },
 ];
 export const features = [
@@ -182,7 +182,7 @@ export const finalCta = {
   perks: [
     {
       icon: Check,
-      title: "3 kun ichida pul qaytarish kafolati",
+      title: "1 kun ichida pul qaytarish kafolati",
       description: "Bepul konsultatsiya",
     },
   ],
@@ -244,7 +244,7 @@ export const codeLines: { tokens: { text: string; color?: string }[] }[] = [
 ];
 
 export const stats = [
-  { value: "1,200+", label: "Bitiruvchi" },
+  { value: "200+", label: "Bitiruvchi" },
   { value: "87%", label: "Ish topdi" },
   { value: "14", label: "Kun" },
 ];
@@ -258,7 +258,7 @@ export const heroTextCta = {
   perks: [
     {
       icon: Check,
-      title: "3 kun pul qaytarish kafolati",
+      title: "1 kun pul qaytarish kafolati",
       description: "Bepul konsultatsiya",
     },
     {
@@ -477,8 +477,8 @@ export const RoadmapText = {
 } as const;
 
 export const SocialProofText = [
-  { value: 1200, suffix: "+", label: "Talaba" },
-  { value: 300, suffix: "+", label: "Ishga kirgan" },
+  { value: 200, suffix: "+", label: "Talaba" },
+  { value: 100, suffix: "+", label: "Ishga kirgan" },
   { value: 95, suffix: "%", label: "Mamnunlik" },
   { value: 40, suffix: "+", label: "Real loyiha" },
 ] as const;
@@ -529,7 +529,7 @@ export const reasons = [
     icon: Trophy,
     title: "Ish topishgacha yo'naltiramiz",
     desc: "CV, portfolio, mock interview va tanish kompaniyalarga tavsiya — narx ichida.",
-    metric: "300+",
+    metric: "100+",
     metricLabel: "ishga kirgan",
   },
 ];
