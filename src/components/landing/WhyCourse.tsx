@@ -1,5 +1,5 @@
 import { reasons, WhyCourseText } from "@/mock/data";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
 
@@ -16,7 +16,7 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
   const Icon = r.icon;
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -54,12 +54,12 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
           {/* Body */}
           <div className="col-span-9 sm:col-span-7 lg:col-span-7">
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 rounded-xl bg-linear-to-br from-primary/25 to-transparent border border-primary/25 flex items-center justify-center shrink-0">
-                <Icon className="w-4 h-4 text-primary" />
+              <div className="size-9 rounded-xl bg-linear-to-br from-primary/25 to-transparent border border-primary/25 flex items-center justify-center shrink-0">
+                <Icon className="size-4 text-primary" />
               </div>
               <div className="h-px flex-1 bg-linear-to-r from-white/15 to-transparent" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">
               {r.title}
             </h3>
             <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-xl leading-relaxed">
@@ -80,7 +80,7 @@ function ReasonRow({ r, i }: { r: (typeof reasons)[number]; i: number }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -99,7 +99,7 @@ export function WhyCourse() {
 
       <div className="mx-auto max-w-5xl px-4">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -110,14 +110,14 @@ export function WhyCourse() {
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             {WhyCourseText.title}
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
             {WhyCourseText.subtitle}{" "}
             <span className="text-gradient-electric">{WhyCourseText.subtitle}</span>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
             {WhyCourseText.description}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Stacked rows */}
         <div className="space-y-4">
@@ -127,7 +127,7 @@ export function WhyCourse() {
         </div>
 
         {/* Bottom proof bar */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -135,7 +135,7 @@ export function WhyCourse() {
           className="mt-10 rounded-2xl border border-primary/20 bg-linear-to-r from-primary/10 via-primary/5 to-transparent backdrop-blur-xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
         >
           <div className="flex items-center gap-3 flex-1">
-            <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+            <CheckCircle2 className="size-5 text-primary shrink-0" />
             <p className="text-sm sm:text-base">
               <span className="font-semibold">3 kun pul qaytarish kafolati.</span>{" "}
               <span className="text-muted-foreground">Yoqmasa — to'liq qaytaramiz, savolsiz.</span>
@@ -146,9 +146,9 @@ export function WhyCourse() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all"
           >
             Narxni ko'rish
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="size-4" />
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

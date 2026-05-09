@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m as FM } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,7 +41,7 @@ export function Pricing({ onCtaClick }: PricingProps) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/15 blur-[140px] rounded-full" />
 
       <div className="mx-auto max-w-6xl px-4">
-        <motion.div
+        <FM.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -51,14 +51,14 @@ export function Pricing({ onCtaClick }: PricingProps) {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             Narxlar
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
             <span className="text-gradient">{PricingText.title}</span>{" "}
             <span className="text-gradient-electric">{PricingText.subtitle}</span>
           </h2>
 
           {/* Countdown */}
           <div className="mt-8 inline-flex items-center gap-3 glass-card-strong rounded-2xl px-5 py-3">
-            <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+            <Sparkles className="size-4 text-primary animate-pulse" />
             <span className="text-sm text-muted-foreground">{PricingText.description}</span>
             <div className="flex items-center gap-1.5 font-mono font-bold tabular-nums">
               <span className="text-gradient text-lg">{fmt(h)}</span>
@@ -68,11 +68,11 @@ export function Pricing({ onCtaClick }: PricingProps) {
               <span className="text-gradient text-lg">{fmt(s)}</span>
             </div>
           </div>
-        </motion.div>
+        </FM.div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map((p, i) => (
-            <motion.div
+            <FM.div
               key={p.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export function Pricing({ onCtaClick }: PricingProps) {
                 }`}
               >
                 <div className="text-sm text-muted-foreground">{p.desc}</div>
-                <h3 className="text-2xl font-bold tracking-tight mt-1">{p.name}</h3>
+                <h3 className="text-2xl font-semibold tracking-tight mt-1">{p.name}</h3>
                 <div className="mt-5 flex items-baseline gap-1.5">
                   <span
                     className={`text-4xl font-bold tracking-tight ${p.highlighted ? "text-gradient-electric" : "text-foreground"}`}
@@ -109,12 +109,12 @@ export function Pricing({ onCtaClick }: PricingProps) {
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm">
                       <div
-                        className={`w-5 h-5 mt-0.5 rounded-full flex items-center justify-center shrink-0 ${
+                        className={`size-5 mt-0.5 rounded-full flex items-center justify-center shrink-0 ${
                           p.highlighted ? "bg-primary/20" : "bg-white/8"
                         }`}
                       >
                         <Check
-                          className={`w-3 h-3 ${p.highlighted ? "text-primary" : "text-foreground/80"}`}
+                          className={`size-3 ${p.highlighted ? "text-primary" : "text-foreground/80"}`}
                         />
                       </div>
                       <span className="text-foreground/90">{f}</span>
@@ -134,7 +134,7 @@ export function Pricing({ onCtaClick }: PricingProps) {
                   {p.cta}
                 </Button>
               </div>
-            </motion.div>
+            </FM.div>
           ))}
         </div>
       </div>

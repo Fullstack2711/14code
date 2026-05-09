@@ -8,16 +8,12 @@ type InitialLoadingSplashProps = {
 };
 
 export function InitialLoadingSplash({ durationMs = 5000, className }: InitialLoadingSplashProps) {
-  const [mounted, setMounted] = useState(false);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const id = window.setTimeout(() => setDone(true), durationMs);
     return () => window.clearTimeout(id);
   }, [durationMs]);
-
-  if (!mounted) return null;
 
   return (
     <div

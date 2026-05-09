@@ -12,7 +12,7 @@ export function Footer() {
               alt="Code14 logo"
               width={36}
               height={36}
-              className="w-9 h-9 object-contain drop-shadow-[0_0_14px_oklch(0.68_0.20_254/0.4)]"
+              className="size-9 object-contain drop-shadow-[0_0_14px_oklch(0.68_0.20_254/0.4)]"
             />
             <span className="sr-only">Code14</span>
           </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -11,7 +11,7 @@ export function FAQ() {
   return (
     <section id="faq" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,12 +21,12 @@ export function FAQ() {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             Savollar
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
             Tez-tez beriladigan <span className="text-gradient-electric">savollar</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,7 +35,7 @@ export function FAQ() {
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-white/5 last:border-0">
+              <AccordionItem key={f.q} value={`item-${i}`} className="border-white/5 last:border-0">
                 <AccordionTrigger className="px-4 sm:px-5 py-5 text-left text-base font-medium hover:no-underline hover:text-primary transition-colors">
                   {f.q}
                 </AccordionTrigger>
@@ -45,7 +45,7 @@ export function FAQ() {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

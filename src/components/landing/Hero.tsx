@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,9 +23,9 @@ function CodeEditor() {
     <div className="glass-card-strong rounded-2xl overflow-hidden font-mono text-[13px] leading-[1.75]">
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/2">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+          <div className="size-3 rounded-full bg-[#ff5f57]" />
+          <div className="size-3 rounded-full bg-[#febc2e]" />
+          <div className="size-3 rounded-full bg-[#28c840]" />
         </div>
         <div className="text-xs text-muted-foreground">career.ts</div>
         <div className="w-12" />
@@ -102,7 +102,7 @@ export function Hero({ onCtaClick }: HeroProps) {
       <div className="mx-auto max-w-6xl px-4 w-full">
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
           {/* LEFT */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
@@ -122,10 +122,10 @@ export function Hero({ onCtaClick }: HeroProps) {
               <span className="text-xs text-silver">
                 Mart oqimiga ro'yxat ochildi
               </span>
-              <ArrowRight className="w-3 h-3 text-muted-foreground group-hover:translate-x-0.5 group-hover:text-primary transition-all" />
+              <ArrowRight className="size-3 text-muted-foreground group-hover:translate-x-0.5 group-hover:text-primary transition-all" />
             </motion.button> */}
 
-            <h1 className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-extrabold tracking-tight leading-[1.05] lg:leading-[1.02]">
+            <h1 className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-semibold tracking-tight leading-[1.05] lg:leading-[1.02]">
               <span className="block whitespace-nowrap text-center text-gradient-electric drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.35)]">
                 {titleAccent}
               </span>
@@ -146,7 +146,7 @@ export function Hero({ onCtaClick }: HeroProps) {
                 className="group bg-linear-to-r from-primary to-primary-glow text-primary-foreground hover:opacity-95 rounded-2xl h-14 px-7 text-base font-semibold shadow-[0_10px_40px_-10px_oklch(0.68_0.20_254/0.7)] transition-all hover:shadow-[0_14px_50px_-10px_oklch(0.68_0.20_254/0.85)] hover:-translate-y-0.5"
               >
                 {heroTextCta.buttonText}
-                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="size-4 ml-1 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 onClick={onCtaClick}
@@ -176,7 +176,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             </div>
 
             {/* Live stats bar */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -197,11 +197,11 @@ export function Hero({ onCtaClick }: HeroProps) {
                   )}
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* RIGHT */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.96, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
@@ -213,24 +213,24 @@ export function Hero({ onCtaClick }: HeroProps) {
               <CodeEditor />
 
               {/* Floating chips */}
-              <motion.div
+              <m.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -top-4 -left-5 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden sm:flex items-center gap-2"
               >
                 <Check className="w-3.5 h-3.5 text-primary" />
                 {heroTextCta.perks[0].title}
-              </motion.div>
-              <motion.div
+              </m.div>
+              <m.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
                 className="absolute -bottom-4 -right-4 glass-card-strong rounded-2xl px-3 py-2 text-xs font-medium hidden sm:flex items-center gap-2"
               >
-                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
+                <span className="size-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
                 {heroTextCta.perks[1].title}
-              </motion.div>
+              </m.div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

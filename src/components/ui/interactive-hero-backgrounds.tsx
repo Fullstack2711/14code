@@ -332,6 +332,8 @@ const darkColors = ["#444444", "#222222", "#111111"];
 // --- Component Prop Interfaces ---
 type BallpitProps = Partial<Omit<BallpitConfig, "colors">> & { colors?: BallpitConfig["colors"] };
 
+const EMPTY_BALLPIT_CONFIG: BallpitProps = {};
+
 interface InteractiveHeroProps {
   brandName?: string;
   heroTitle?: string;
@@ -348,7 +350,7 @@ interface BallpitBackgroundProps {
 
 export const BallpitBackground: React.FC<BallpitBackgroundProps> = ({
   className,
-  ballpitConfig = {},
+  ballpitConfig = EMPTY_BALLPIT_CONFIG,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDark, setIsDark] = useState(true);
@@ -444,7 +446,7 @@ export const InteractiveHero: React.FC<InteractiveHeroProps> = ({
   heroDescription = "Discover cutting-edge solutions designed for the modern digital landscape.",
   emailPlaceholder = "your@email.com",
   className,
-  ballpitConfig = {},
+  ballpitConfig = EMPTY_BALLPIT_CONFIG,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme, setTheme } = useTheme();

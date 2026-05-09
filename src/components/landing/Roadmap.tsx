@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { days, RoadmapText } from "@/mock/data";
 
@@ -16,7 +16,7 @@ export function Roadmap() {
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-96 h-96 bg-primary/15 blur-[120px] rounded-full" />
 
       <div className="mx-auto max-w-5xl px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -26,17 +26,17 @@ export function Roadmap() {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             {RoadmapText.plan}
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
             <span className="text-gradient">{RoadmapText.title}</span>{" "}
             <span className="text-gradient-electric">{RoadmapText.subtitle}</span>
           </h2>
           <p className="mt-4 text-muted-foreground">{RoadmapText.description}</p>
-        </motion.div>
+        </m.div>
 
         <div ref={ref} className="relative">
           {/* Timeline line */}
           <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-white/10">
-            <motion.div
+            <m.div
               style={{ height: lineHeight }}
               className="absolute top-0 left-0 right-0 bg-linear-to-b from-primary via-primary-glow to-primary shadow-[0_0_12px_oklch(0.68_0.20_254)]"
             />
@@ -46,7 +46,7 @@ export function Roadmap() {
             {days.map((d, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
+                <m.div
                   key={d.day}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export function Roadmap() {
                 >
                   {/* Dot */}
                   <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 z-10">
-                    <div className="relative w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_oklch(0.68_0.20_254)] border-2 border-background">
+                    <div className="relative size-4 rounded-full bg-primary shadow-[0_0_20px_oklch(0.68_0.20_254)] border-2 border-background">
                       <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-30" />
                     </div>
                   </div>
@@ -78,7 +78,7 @@ export function Roadmap() {
                       <p className="mt-1.5 text-sm text-muted-foreground">{d.desc}</p>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>

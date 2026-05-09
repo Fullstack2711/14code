@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 import appCss from "../styles.css?url";
 import { InitialLoadingSplash } from "@/components/app/InitialLoadingSplash";
@@ -95,9 +96,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <InitialLoadingSplash durationMs={5000} />
       <Outlet />
-    </>
+    </LazyMotion>
   );
 }

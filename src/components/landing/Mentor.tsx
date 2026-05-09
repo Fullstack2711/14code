@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { content, TABS } from "@/mock/data";
@@ -15,7 +15,7 @@ export function Mentor() {
   const [direction, setDirection] = useState(1);
 
   const filtered =
-    tab === "all" ? content.mentors : content.mentors.filter((m) => m.role.includes(tab));
+    tab === "all" ? content.mentors : content.mentors.filter((mentor) => mentor.role.includes(tab));
 
   const total = filtered.length;
 
@@ -30,12 +30,12 @@ export function Mentor() {
     setTab(key);
   };
 
-  const m = filtered[index];
+  const mentor = filtered[index];
 
   return (
     <section id="mentor" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -45,11 +45,11 @@ export function Mentor() {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             {content.sectionBadge}
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
             {content.titlePrefix}{" "}
             <span className="text-gradient-electric">{content.titleHighlight}</span>
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -60,7 +60,7 @@ export function Mentor() {
               className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${tab === t.key ? "text-background" : "glass-card text-silver hover:text-foreground"}`}
             >
               {tab === t.key && (
-                <motion.span
+                <m.span
                   layoutId="tab-pill"
                   className="absolute inset-0 rounded-full bg-primary"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -73,8 +73,8 @@ export function Mentor() {
 
         <div className="relative overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={`${m.name}-${m.role}`}
+            <m.div
+              key={`${mentor.name}-${mentor.role}`}
               custom={direction}
               variants={variants}
               initial="enter"
@@ -89,27 +89,27 @@ export function Mentor() {
                   <div className="absolute -inset-2 bg-linear-to-br from-primary to-primary-glow rounded-3xl blur-xl opacity-50" />
                   <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border border-white/15">
                     <img
-                      src={m.image.src}
-                      alt={m.image.alt}
+                      src={mentor.image.src}
+                      alt={mentor.image.alt}
                       loading="lazy"
-                      width={m.image.width}
-                      height={m.image.height}
+                      width={mentor.image.width}
+                      height={mentor.image.height}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
                   </div>
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 glass-card-strong rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1.5 whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
-                    {m.status}
+                    {mentor.status}
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-3xl font-bold tracking-tight">{m.name}</h3>
-                  <p className="mt-1 text-muted-foreground">{m.role}</p>
-                  <p className="mt-5 text-foreground/85 leading-relaxed">{m.quote}</p>
+                  <h3 className="text-3xl font-semibold tracking-tight">{mentor.name}</h3>
+                  <p className="mt-1 text-muted-foreground">{mentor.role}</p>
+                  <p className="mt-5 text-foreground/85 leading-relaxed">{mentor.quote}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {m.perks.map((p) => (
+                    {mentor.perks.map((p) => (
                       <div
                         key={p.label}
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card text-xs font-medium text-silver"
@@ -121,7 +121,7 @@ export function Mentor() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
 
@@ -132,19 +132,19 @@ export function Mentor() {
             className="glass-card rounded-full p-2.5 hover:bg-white/10 transition-colors"
             aria-label="Oldingi"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="size-5" />
           </button>
 
           <div className="flex items-center gap-2">
-            {content.mentors.map((_, i) => (
+            {content.mentors.map((mentor_item, i) => (
               <button
-                key={i}
+                key={mentor_item.name}
                 onClick={() => {
                   setDirection(i > index ? 1 : -1);
                   setIndex(i);
                 }}
                 className={`rounded-full transition-all duration-300 ${
-                  i === index ? "w-6 h-2 bg-primary" : "w-2 h-2 bg-white/20 hover:bg-white/40"
+                  i === index ? "w-6 h-2 bg-primary" : "size-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Mentor ${i + 1}`}
               />
@@ -156,7 +156,7 @@ export function Mentor() {
             className="glass-card rounded-full p-2.5 hover:bg-white/10 transition-colors"
             aria-label="Keyingi"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="size-5" />
           </button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
 import { features } from "@/mock/data";
 
@@ -16,7 +16,7 @@ function FeatureCard({ icon: Icon, title, desc, index }: (typeof features)[0] & 
   };
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -30,14 +30,14 @@ function FeatureCard({ icon: Icon, title, desc, index }: (typeof features)[0] & 
           background: `radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), oklch(0.68 0.20 254 / 0.10), transparent 40%), linear-gradient(135deg, oklch(1 0 0 / 0.06) 0%, oklch(1 0 0 / 0.02) 100%)`,
         }}
       >
-        <div className="relative w-12 h-12 rounded-2xl bg-linear-to-br from-primary/20 to-primary-glow/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-          <Icon className="w-5 h-5 text-primary" />
+        <div className="relative size-12 rounded-2xl bg-linear-to-br from-primary/20 to-primary-glow/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+          <Icon className="size-5 text-primary" />
           <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
         </div>
         <h3 className="text-xl font-semibold tracking-tight mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -45,7 +45,7 @@ export function Features() {
   return (
     <section id="kurs" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,14 +55,14 @@ export function Features() {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             Kurs dasturi
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
             Nima <span className="text-gradient-electric">o'rganasiz</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             Junior Developer bo'lib ishga kirish uchun kerak bo'ladigan barcha texnologiyalar —
             suvsiz, faqat amaliyot.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f, i) => (

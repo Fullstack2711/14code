@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useCountUp } from "@/hooks/use-count-up";
 import { SocialProofCompanies, SocialProofHeadingText, SocialProofText } from "@/mock/data";
@@ -33,7 +33,7 @@ export function SocialProof() {
   return (
     <section className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4" ref={ref}>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,7 +56,7 @@ export function SocialProof() {
               <div className="flex gap-12" style={{ animation: "scroll 30s linear infinite" }}>
                 {[...SocialProofCompanies, ...SocialProofCompanies].map((c, i) => (
                   <div
-                    key={i}
+                    key={`${c}-${i}`}
                     className="text-2xl sm:text-3xl font-semibold text-muted-foreground/60 hover:text-foreground transition-colors whitespace-nowrap tracking-tight"
                   >
                     {c}
@@ -65,7 +65,7 @@ export function SocialProof() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

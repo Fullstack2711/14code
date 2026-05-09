@@ -41,7 +41,7 @@ export function Header({ onCtaClick }: HeaderProps) {
               alt="Code14 logo"
               width={40}
               height={40}
-              className="w-10 h-10 scale-150 md:scale-150 object-contain drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.45)] group-hover:scale-105 transition-transform"
+              className="size-10 scale-150 md:scale-150 object-contain drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.45)] group-hover:scale-105 transition-transform"
             />
             <span className="sr-only">Code14</span>
           </Link>
@@ -71,7 +71,7 @@ export function Header({ onCtaClick }: HeaderProps) {
               onClick={() => setOpen((o) => !o)}
               aria-label="Menu"
             >
-              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
           </div>
         </div>
