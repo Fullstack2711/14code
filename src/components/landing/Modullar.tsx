@@ -6,7 +6,7 @@ const tracks = [
     key: "frontend",
     label: "Frontend",
     days: [
-      { day: "1-kun", title: "HTML & CSS", desc: "Semantic markup, modern CSS, BEM" },
+      { day: "1-kun", title: "HTML and CSS", desc: "Semantic markup, modern CSS, BEM" },
       { day: "3-kun", title: "Responsive Layout", desc: "Flexbox, Grid, Mobile-first" },
       { day: "5-kun", title: "JavaScript", desc: "ES6+, DOM, Events, Logic" },
       { day: "7-kun", title: "API & Async", desc: "Fetch, Promises, async/await" },
