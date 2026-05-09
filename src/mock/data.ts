@@ -318,7 +318,7 @@ export const tracks = [
       { day: "7-kun", title: "Database & SQL", desc: "PostgreSQL, SQLAlchemy, migrations" },
       { day: "9-kun", title: "REST API", desc: "CRUD, validation, error handling" },
       { day: "11-kun", title: "Auth & Deploy", desc: "JWT, OAuth2, Docker basics" },
-      { day: "13-kun", title: "Full Project", desc: "Real API + GitHub + README" },
+      { day: "13-kun", title: "Full Project", desc: "Real API + GitHub + README FILE" },
       { day: "14-kun", title: "Interview & Apply", desc: "Mock interview, ish topish" },
     ],
   },
