@@ -76,7 +76,9 @@ export function BeforeAfter() {
               <div className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-3">
                 14 kundan keyin
               </div>
-              <h3 className="text-2xl font-semibold tracking-tight text-gradient">Junior Developer</h3>
+              <h3 className="text-2xl font-semibold tracking-tight text-gradient">
+                Junior Developer
+              </h3>
               <ul className="mt-6 space-y-3">
                 {after.map((a) => (
                   <li key={a} className="flex items-start gap-3 text-sm text-foreground">

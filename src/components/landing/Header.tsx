@@ -15,10 +15,29 @@ export function Header({ onCtaClick }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let frame = 0;
+    let previous = window.scrollY > 20;
+    setScrolled(previous);
+
+    const update = () => {
+      frame = 0;
+      const next = window.scrollY > 20;
+      if (next !== previous) {
+        previous = next;
+        setScrolled(next);
+      }
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (

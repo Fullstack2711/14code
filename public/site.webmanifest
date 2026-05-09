@@ -1,15 +1,17 @@
 {
+  "id": "/",
   "name": "Code14 — 14 kunda Junior Developer",
   "short_name": "Code14",
   "description": "14 kunda Junior Developer bo'lib birinchi ishingizni toping. Real loyihalar, mentor yordami va portfolio.",
   "lang": "uz",
+  "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0b0b0f",
   "theme_color": "#0b0b0f",
-  "categories": ["education"],
+  "categories": ["education", "productivity"],
   "icons": [
     {
       "src": "/favicon.svg",
@@ -21,6 +23,26 @@
       "src": "/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kurs dasturi",
+      "short_name": "Kurs",
+      "url": "/#kurs",
+      "description": "Code14 kurs dasturini ko'rish"
+    },
+    {
+      "name": "Narxlar",
+      "short_name": "Narxlar",
+      "url": "/#pricing",
+      "description": "Code14 tariflarini ko'rish"
     }
   ]
 }

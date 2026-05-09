@@ -9,7 +9,7 @@ import { faqs } from "@/mock/data";
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-24 sm:py-32">
+    <section id="faq" aria-labelledby="faq-heading" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4">
         <m.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +21,7 @@ export function FAQ() {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             Savollar
           </div>
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
+          <h2 id="faq-heading" className="text-4xl sm:text-5xl font-semibold tracking-tight">
             Tez-tez beriladigan <span className="text-gradient-electric">savollar</span>
           </h2>
         </m.div>

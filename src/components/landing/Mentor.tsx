@@ -138,7 +138,7 @@ export function Mentor() {
           <div className="flex items-center gap-2">
             {content.mentors.map((mentor_item, i) => (
               <button
-                key={mentor_item.name}
+                key={`${mentor_item.name}-${mentor_item.role}`}
                 onClick={() => {
                   setDirection(i > index ? 1 : -1);
                   setIndex(i);

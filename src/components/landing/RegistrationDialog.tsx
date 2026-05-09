@@ -64,7 +64,7 @@ export function RegistrationDialog({ open, onOpenChange }: RegistrationDialogPro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="glass-card-strong border-white/10 sm:max-w-md rounded-3xl">
+      <DialogContent className="border-white/15 bg-[#080b12] shadow-[0_30px_90px_-24px_oklch(0_0_0/0.95),0_0_70px_-35px_oklch(0.68_0.20_254/0.75)] sm:max-w-md rounded-3xl">
         <DialogHeader>
           <div className="mx-auto mb-2 size-12 rounded-2xl overflow-hidden flex items-center justify-center">
             <img src={logo} alt="Logo" className="w-full h-full object-contain" />

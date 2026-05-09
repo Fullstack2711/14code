@@ -32,12 +32,33 @@ function useCountdown() {
 interface PricingProps {
   onCtaClick: () => void;
 }
-export function Pricing({ onCtaClick }: PricingProps) {
+
+function CountdownBadge() {
   const { h, m, s } = useCountdown();
   const fmt = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <section id="pricing" className="relative py-24 sm:py-32 overflow-hidden">
+    <div className="mt-8 inline-flex items-center gap-3 glass-card-strong rounded-2xl px-5 py-3">
+      <Sparkles className="size-4 text-primary animate-pulse" />
+      <span className="text-sm text-muted-foreground">{PricingText.description}</span>
+      <div className="flex items-center gap-1.5 font-mono font-bold tabular-nums">
+        <span className="text-gradient text-lg">{fmt(h)}</span>
+        <span className="text-muted-foreground">:</span>
+        <span className="text-gradient text-lg">{fmt(m)}</span>
+        <span className="text-muted-foreground">:</span>
+        <span className="text-gradient text-lg">{fmt(s)}</span>
+      </div>
+    </div>
+  );
+}
+
+export function Pricing({ onCtaClick }: PricingProps) {
+  return (
+    <section
+      id="pricing"
+      aria-labelledby="pricing-heading"
+      className="relative py-24 sm:py-32 overflow-hidden"
+    >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/15 blur-[140px] rounded-full" />
 
       <div className="mx-auto max-w-6xl px-4">
@@ -51,23 +72,13 @@ export function Pricing({ onCtaClick }: PricingProps) {
           <div className="inline-block px-3 py-1 rounded-full glass-card text-xs font-medium text-silver mb-4">
             Narxlar
           </div>
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight">
+          <h2 id="pricing-heading" className="text-4xl sm:text-5xl font-semibold tracking-tight">
             <span className="text-gradient">{PricingText.title}</span>{" "}
             <span className="text-gradient-electric">{PricingText.subtitle}</span>
           </h2>
 
           {/* Countdown */}
-          <div className="mt-8 inline-flex items-center gap-3 glass-card-strong rounded-2xl px-5 py-3">
-            <Sparkles className="size-4 text-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">{PricingText.description}</span>
-            <div className="flex items-center gap-1.5 font-mono font-bold tabular-nums">
-              <span className="text-gradient text-lg">{fmt(h)}</span>
-              <span className="text-muted-foreground">:</span>
-              <span className="text-gradient text-lg">{fmt(m)}</span>
-              <span className="text-muted-foreground">:</span>
-              <span className="text-gradient text-lg">{fmt(s)}</span>
-            </div>
-          </div>
+          <CountdownBadge />
         </FM.div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">

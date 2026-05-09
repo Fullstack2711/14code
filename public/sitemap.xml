@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://code14.uz/</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://code14.uz/og-image-social.jpg</image:loc>
+      <image:title>Code14 — 14 kunda Junior Developer bo'lish kursi</image:title>
+      <image:caption>HTML, CSS, JavaScript, React, Git, portfolio va interview tayyorligi bo'yicha 14 kunlik amaliy dasturlash kursi.</image:caption>
+    </image:image>
   </url>
 </urlset>

@@ -16,9 +16,5 @@ const isNode = process.env.NODE_SERVER === "1";
 
 export default defineConfig({
   cloudflare: isVercel || isNode ? false : undefined,
-  plugins: isVercel
-    ? [nitro()]
-    : isNode
-      ? [nitro({ preset: "node-server" })]
-      : [],
+  plugins: isVercel ? [nitro()] : isNode ? [nitro({ preset: "node-server" })] : [],
 });

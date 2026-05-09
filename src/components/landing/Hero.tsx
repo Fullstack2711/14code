@@ -1,12 +1,42 @@
 import { m } from "framer-motion";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { ArrowRight, Check, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { BallpitBackground } from "@/components/ui/interactive-hero-backgrounds";
 import { codeLines, heroTextCta, stats } from "@/mock/data";
 
 interface HeroProps {
   onCtaClick: () => void;
+}
+
+const BallpitBackground = lazy(() =>
+  import("@/components/ui/interactive-hero-backgrounds").then((mod) => ({
+    default: mod.BallpitBackground,
+  })),
+);
+
+function useDeferredHeroBackground() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+      ?.saveData;
+
+    if (prefersReducedMotion || saveData) return;
+
+    const enable = () => setEnabled(true);
+    const requestIdle = window.requestIdleCallback;
+
+    if (requestIdle) {
+      const id = requestIdle(enable, { timeout: 1500 });
+      return () => window.cancelIdleCallback?.(id);
+    }
+
+    const id = window.setTimeout(enable, 700);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  return enabled;
 }
 
 function CodeEditor() {
@@ -72,28 +102,36 @@ function CodeEditor() {
 }
 
 export function Hero({ onCtaClick }: HeroProps) {
+  const showDynamicBackground = useDeferredHeroBackground();
   const titleWords = heroTextCta.title.split(" ");
   const titleAccent = titleWords.slice(0, 2).join(" ");
   const titleRest = titleWords.slice(2).join(" ");
 
   return (
-    <section className="relative min-h-screen pt-28 pb-16 overflow-hidden flex items-center">
+    <section
+      aria-labelledby="hero-heading"
+      className="relative min-h-screen pt-28 pb-16 overflow-hidden flex items-center"
+    >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <BallpitBackground
-          className="opacity-55"
-          ballpitConfig={{
-            count: 150,
-            gravity: 0.5,
-            friction: 0.99,
-            minSize: 0.4,
-            maxSize: 0.9,
-            lightIntensity: 6,
-            ambientIntensity: 2.2,
-            colors: ["#60a5fa", "#a78bfa", "#22d3ee", "#93c5fd"],
-          }}
-        />
+        {showDynamicBackground && (
+          <Suspense fallback={null}>
+            <BallpitBackground
+              className="opacity-45"
+              ballpitConfig={{
+                count: 72,
+                gravity: 0.42,
+                friction: 0.99,
+                minSize: 0.35,
+                maxSize: 0.75,
+                lightIntensity: 4,
+                ambientIntensity: 1.8,
+                colors: ["#60a5fa", "#a78bfa", "#22d3ee", "#93c5fd"],
+              }}
+            />
+          </Suspense>
+        )}
         <div className="absolute inset-0 grid-bg" />
         <div className="absolute top-1/4 left-[10%] w-96 h-96 rounded-full bg-primary/25 blur-[120px] animate-float-slow" />
         <div className="absolute bottom-1/4 right-[8%] w-120 h-120 rounded-full bg-primary-glow/20 blur-[140px] animate-float-slower" />
@@ -125,7 +163,10 @@ export function Hero({ onCtaClick }: HeroProps) {
               <ArrowRight className="size-3 text-muted-foreground group-hover:translate-x-0.5 group-hover:text-primary transition-all" />
             </motion.button> */}
 
-            <h1 className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-semibold tracking-tight leading-[1.05] lg:leading-[1.02]">
+            <h1
+              id="hero-heading"
+              className="inline-block max-w-[16ch] text-balance text-[2.75rem] sm:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] font-semibold tracking-tight leading-[1.05] lg:leading-[1.02]"
+            >
               <span className="block whitespace-nowrap text-center text-gradient-electric drop-shadow-[0_0_18px_oklch(0.68_0.20_254/0.35)]">
                 {titleAccent}
               </span>

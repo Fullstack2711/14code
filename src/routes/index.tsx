@@ -16,173 +16,153 @@ import { FinalCta } from "@/components/landing/FinalCta";
 import { Footer } from "@/components/landing/Footer";
 import { RegistrationDialog } from "@/components/landing/RegistrationDialog";
 import { Toaster } from "@/components/ui/sonner";
+import { faqs, plans, tracks } from "@/mock/data";
+import {
+  LANDING_LINKS,
+  LANDING_META,
+  LOGO_URL,
+  OG_IMAGE,
+  PAGE_URL,
+  SEO_DESCRIPTION,
+  SEO_TITLE,
+  SITE_NAME,
+  SITE_URL,
+  jsonLd,
+} from "@/lib/seo";
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://code14.uz";
-const OG_IMAGE =
-  (import.meta.env.VITE_OG_IMAGE_URL as string | undefined) ??
-  `${SITE_URL}/og-image-social.jpg`;
+const courseTopics = Array.from(
+  new Set(tracks.flatMap((track) => track.days.map((day) => day.title))),
+);
 
-const organizationSchema = {
+const landingJsonLd = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  name: "Code14",
-  url: SITE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: `${SITE_URL}/favicon.svg`,
-    width: 512,
-    height: 512,
-  },
-  image: OG_IMAGE,
-  description:
-    "14 kunlik premium intensiv dasturlash kursi. Junior Developer bo'lib ishga kirish uchun amaliy bilim.",
-  sameAs: ["https://t.me/code14"],
-  address: { "@type": "PostalAddress", addressCountry: "UZ" },
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    url: "https://t.me/code14",
-    availableLanguage: ["Uzbek", "Russian"],
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "1200",
-    bestRating: "5",
-    worstRating: "1",
-  },
-};
-
-const courseSchema = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: "14 Kunda Junior Developer",
-  url: SITE_URL,
-  description:
-    "HTML, CSS, JavaScript, React, Git, Portfolio va Interview bilan 14 kunda Junior Frontend Developer bo'lib ishga kirish kursi.",
-  educationalLevel: "Beginner",
-  teaches: ["HTML", "CSS", "JavaScript", "React", "Git", "Portfolio", "Interview tayyorlik"],
-  inLanguage: "uz",
-  timeRequired: "P14D",
-  image: OG_IMAGE,
-  provider: {
-    "@type": "EducationalOrganization",
-    name: "Code14",
-    sameAs: SITE_URL,
-  },
-  hasCourseInstance: {
-    "@type": "CourseInstance",
-    courseMode: "online",
-    courseWorkload: "PT60H",
-    inLanguage: "uz",
-    courseSchedule: {
-      "@type": "Schedule",
-      duration: "P14D",
-    },
-  },
-  offers: {
-    "@type": "Offer",
-    url: SITE_URL,
-    category: "Paid",
-    priceCurrency: "UZS",
-    price: "1200000",
-    availability: "https://schema.org/InStock",
-  },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
+  "@graph": [
     {
-      "@type": "Question",
-      name: "Haqiqatan ham 2 haftada Junior Developer bo'lish mumkinmi?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ha, agar har kuni 4-6 soat to'liq bag'ishlasangiz. Biz suvga vaqt sarflamaymiz — faqat ishga kerakli bilim. 1200+ talaba bunga amin bo'lgan.",
+      "@type": "EducationalOrganization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: PAGE_URL,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#logo`,
+        url: LOGO_URL,
+        width: 512,
+        height: 512,
+      },
+      image: OG_IMAGE,
+      description: SEO_DESCRIPTION,
+      sameAs: ["https://t.me/code14"],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "UZ",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        url: "https://t.me/code14",
+        availableLanguage: ["uz", "ru"],
       },
     },
     {
-      "@type": "Question",
-      name: "Nol bilim bilan kirsam bo'ladimi?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ha, kurs noldan boshlanadi. Muhimi — vaqt ajratish va mentor ko'rsatmalarini bajarish. Kompyuter va internet — yetarli.",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: PAGE_URL,
+      name: SITE_NAME,
+      description: SEO_DESCRIPTION,
+      inLanguage: "uz",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}#webpage`,
+      url: PAGE_URL,
+      name: SEO_TITLE,
+      description: SEO_DESCRIPTION,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#course` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+      },
+      breadcrumb: { "@id": `${PAGE_URL}#breadcrumb` },
+      inLanguage: "uz",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${PAGE_URL}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Bosh sahifa",
+          item: PAGE_URL,
+        },
+      ],
+    },
+    {
+      "@type": "Course",
+      "@id": `${SITE_URL}/#course`,
+      name: "14 Kunda Junior Developer",
+      url: PAGE_URL,
+      description: SEO_DESCRIPTION,
+      provider: { "@id": `${SITE_URL}/#organization` },
+      educationalLevel: "Beginner",
+      teaches: courseTopics,
+      inLanguage: "uz",
+      timeRequired: "P14D",
+      image: OG_IMAGE,
+      offers: {
+        "@type": "OfferCatalog",
+        name: "Code14 tariflari",
+        itemListElement: plans.map((plan) => ({
+          "@type": "Offer",
+          name: plan.name,
+          url: `${PAGE_URL}#pricing`,
+          category: "Paid",
+          priceCurrency: "UZS",
+          price: plan.price.replace(/\D/g, ""),
+          availability: "https://schema.org/InStock",
+          itemOffered: {
+            "@type": "Course",
+            name: `Code14 ${plan.name}`,
+            description: plan.desc,
+          },
+        })),
+      },
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "online",
+        courseWorkload: "PT60H",
+        inLanguage: "uz",
+        courseSchedule: {
+          "@type": "Schedule",
+          repeatCount: 14,
+          repeatFrequency: "P1D",
+        },
       },
     },
     {
-      "@type": "Question",
-      name: "Ish topishga yordam berasizmi?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pro tarif bilan: CV/LinkedIn correction, mock interview, ish e'lonlari va to'g'ridan-to'g'ri kompaniyalarga tavsiya. 300+ talabamiz allaqachon ishga kirgan.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Darslar yozib olinadimi?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ha, barcha darslar yozib olinadi va sizda umrbod qoladi. Istalgan vaqt qayta ko'rishingiz mumkin.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Agar yoqmasa, pul qaytariladimi?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ha, dastlabki 3 kun ichida hech qanday savolsiz 100% pul qaytariladi.",
-      },
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.a,
+        },
+      })),
     },
   ],
 };
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "14 Kunda Junior Developer — Premium Dasturlash Kursi | Code14" },
-      {
-        name: "description",
-        content:
-          "2 haftada HTML, CSS, JavaScript, React, Git va Portfolio bilan Junior Developer bo'ling. 1200+ talaba, 300+ ishga kirgan, 95% mamnunlik. Hoziroq boshlang.",
-      },
-      {
-        name: "keywords",
-        content:
-          "dasturlash kursi, junior developer, frontend, react, javascript, 14 kun, ishga kirish, code14, html, css",
-      },
-      { property: "og:title", content: "14 Kunda Junior Developer — Code14" },
-      {
-        property: "og:description",
-        content:
-          "Premium intensiv dasturlash kursi. 14 kunda real loyihalar, portfolio va interview tayyorlik bilan ishga tayyor bo'ling.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
-      { property: "og:site_name", content: "Code14" },
-      { property: "og:locale", content: "uz_UZ" },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      {
-        property: "og:image:alt",
-        content: "14 Kunda Junior Developer — Code14 premium dasturlash kursi",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "14 Kunda Junior Developer — Code14" },
-      {
-        name: "twitter:description",
-        content: "Premium intensiv dasturlash kursi — 14 kunda Junior Developer.",
-      },
-      { name: "twitter:image", content: OG_IMAGE },
-      { name: "twitter:image:alt", content: "Code14 — 14 kunlik dasturlash kursi" },
-    ],
-    links: [{ rel: "canonical", href: SITE_URL }],
-    scripts: [
-      { type: "application/ld+json", children: JSON.stringify(organizationSchema) },
-      { type: "application/ld+json", children: JSON.stringify(courseSchema) },
-      { type: "application/ld+json", children: JSON.stringify(faqSchema) },
-    ],
+    meta: [...LANDING_META],
+    links: [...LANDING_LINKS],
+    scripts: [jsonLd(landingJsonLd)],
   }),
   component: Index,
 });

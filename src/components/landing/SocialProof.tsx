@@ -31,8 +31,11 @@ export function SocialProof() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-20 sm:py-28">
+    <section aria-labelledby="social-proof-heading" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4" ref={ref}>
+        <h2 id="social-proof-heading" className="sr-only">
+          Code14 natijalari va bitiruvchilar ishonchi
+        </h2>
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -28,7 +28,7 @@ export function Footer() {
               {footerText.links[2].label}
             </a>
             <a
-              href="https://t.me"
+              href="https://t.me/code14"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground transition-colors"
@@ -37,9 +37,7 @@ export function Footer() {
             </a>
           </div>
 
-          <p className="text-xs text-muted-foreground">
-            {`${footerText.copyright} © ${new Date().getFullYear()}`}
-          </p>
+          <p className="text-xs text-muted-foreground">{footerText.copyright}</p>
         </div>
       </div>
     </footer>

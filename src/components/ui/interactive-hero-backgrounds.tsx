@@ -75,6 +75,8 @@ class X {
   #animationState = { elapsed: 0, delta: 0 };
   #isAnimating: boolean = false;
   #isVisible: boolean = false;
+  #boundOnResize = this.#onResize.bind(this);
+  #boundOnVisibilityChange = this.#onVisibilityChange.bind(this);
   canvas: HTMLCanvasElement;
   camera: PerspectiveCamera;
   scene: Scene;
@@ -92,7 +94,7 @@ class X {
       canvas: this.canvas,
       powerPreference: "high-performance",
       alpha: true,
-      antialias: true,
+      antialias: false,
       ...this.#config.rendererOptions,
     });
     this.renderer.outputColorSpace = SRGBColorSpace;
@@ -103,16 +105,16 @@ class X {
   #initObservers() {
     const parentEl = this.#config.size === "parent" ? (this.canvas.parentNode as Element) : null;
     if (parentEl) {
-      this.#resizeObserver = new ResizeObserver(this.#onResize.bind(this));
+      this.#resizeObserver = new ResizeObserver(this.#boundOnResize);
       this.#resizeObserver.observe(parentEl);
     } else {
-      window.addEventListener("resize", this.#onResize.bind(this));
+      window.addEventListener("resize", this.#boundOnResize, { passive: true });
     }
     this.#intersectionObserver = new IntersectionObserver(this.#onIntersection.bind(this), {
       threshold: 0,
     });
     this.#intersectionObserver.observe(this.canvas);
-    document.addEventListener("visibilitychange", this.#onVisibilityChange.bind(this));
+    document.addEventListener("visibilitychange", this.#boundOnVisibilityChange);
   }
   #onResize() {
     if (this.#resizeTimer) clearTimeout(this.#resizeTimer);
@@ -132,7 +134,7 @@ class X {
     this.size.wHeight = 2 * Math.tan(fovRad / 2) * this.camera.position.z;
     this.size.wWidth = this.size.wHeight * this.camera.aspect;
     this.renderer.setSize(w, h);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     this.onAfterResize(this.size);
   }
   #onIntersection(e: IntersectionObserverEntry[]) {
@@ -169,8 +171,8 @@ class X {
     this.#stopAnimation();
     this.#resizeObserver?.disconnect();
     this.#intersectionObserver?.disconnect();
-    window.removeEventListener("resize", this.#onResize.bind(this));
-    document.removeEventListener("visibilitychange", this.#onVisibilityChange.bind(this));
+    window.removeEventListener("resize", this.#boundOnResize);
+    document.removeEventListener("visibilitychange", this.#boundOnVisibilityChange);
     this.scene.clear();
     this.renderer.dispose();
   }
@@ -269,7 +271,7 @@ class Z extends InstancedMesh {
     const pmrem = new PMREMGenerator(renderer);
     const envTexture = pmrem.fromScene(new RoomEnvironment(renderer)).texture;
     pmrem.dispose();
-    const geometry = new SphereGeometry(1, 24, 24);
+    const geometry = new SphereGeometry(1, 16, 12);
     const material = new MeshPhysicalMaterial({ envMap: envTexture, ...params.materialParams });
     super(geometry, material, params.count);
     this.config = params;
