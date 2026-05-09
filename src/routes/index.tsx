@@ -17,24 +17,39 @@ import { Footer } from "@/components/landing/Footer";
 import { RegistrationDialog } from "@/components/landing/RegistrationDialog";
 import { Toaster } from "@/components/ui/sonner";
 
-const SITE_URL = "https://code14.uz";
-const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://code14.uz";
+const OG_IMAGE =
+  (import.meta.env.VITE_OG_IMAGE_URL as string | undefined) ??
+  `${SITE_URL}/og-image-social.jpg`;
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "Code14",
   url: SITE_URL,
-  logo: OG_IMAGE,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/favicon.svg`,
+    width: 512,
+    height: 512,
+  },
+  image: OG_IMAGE,
   description:
     "14 kunlik premium intensiv dasturlash kursi. Junior Developer bo'lib ishga kirish uchun amaliy bilim.",
   sameAs: ["https://t.me/code14"],
   address: { "@type": "PostalAddress", addressCountry: "UZ" },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    url: "https://t.me/code14",
+    availableLanguage: ["Uzbek", "Russian"],
+  },
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
     reviewCount: "1200",
     bestRating: "5",
+    worstRating: "1",
   },
 };
 
@@ -42,8 +57,14 @@ const courseSchema = {
   "@context": "https://schema.org",
   "@type": "Course",
   name: "14 Kunda Junior Developer",
+  url: SITE_URL,
   description:
     "HTML, CSS, JavaScript, React, Git, Portfolio va Interview bilan 14 kunda Junior Frontend Developer bo'lib ishga kirish kursi.",
+  educationalLevel: "Beginner",
+  teaches: ["HTML", "CSS", "JavaScript", "React", "Git", "Portfolio", "Interview tayyorlik"],
+  inLanguage: "uz",
+  timeRequired: "P14D",
+  image: OG_IMAGE,
   provider: {
     "@type": "EducationalOrganization",
     name: "Code14",
@@ -54,12 +75,18 @@ const courseSchema = {
     courseMode: "online",
     courseWorkload: "PT60H",
     inLanguage: "uz",
+    courseSchedule: {
+      "@type": "Schedule",
+      duration: "P14D",
+    },
   },
   offers: {
     "@type": "Offer",
+    url: SITE_URL,
     category: "Paid",
     priceCurrency: "UZS",
     price: "1200000",
+    availability: "https://schema.org/InStock",
   },
 };
 
