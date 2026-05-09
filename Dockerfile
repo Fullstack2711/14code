@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install dependencies first (layer cache)
 COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Copy source and build for Node.js server
 COPY . .
